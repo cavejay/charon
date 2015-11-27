@@ -12,4 +12,4 @@ from . import mod_terminal
 
 @mod_terminal.route('/', methods=['POST'])
 def terminal():
-    return ""
+    return "blahblah"
