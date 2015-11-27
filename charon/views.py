@@ -7,7 +7,7 @@
 
 from pathlib import Path
 
-from flask import render_template, jsonify
+from flask import jsonify
 from . import application
 
 
@@ -15,10 +15,10 @@ from . import application
 def index():
     """
     Root path of the website.
-    :return: HTML content of the rooth path.
+    :return: HTML content of the root path.
     """
 
-    return render_template('index.html')
+    return application.send_static_file('index.html')
 
 
 @application.route('/hello/<name>')
