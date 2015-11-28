@@ -22,15 +22,11 @@ def index():
     return application.send_static_file('index.html')
 
 
-@application.route('/hello/<name>')
-def say_hello(name):
-    return 'Hello {}!'.format(name)
-
-
 @application.route('/list/<path:folder>')
 def list_folder(folder):
     """
     List a folder on the filesystem
+    :param folder: Path provided in the url to list contents of.
     :return:
     """
     p = Path('/' + folder)
