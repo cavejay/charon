@@ -1,5 +1,5 @@
 <applauncher>
-    <div id="taskbar">
+    <div class="taskbar">
         <button id="app-list-button" onclick={ this.click }>
             <i class="zmdi zmdi-favorite zmdi-hc-3x"></i>
         </button>
@@ -7,12 +7,12 @@
             <h2> C H A R O N </h2>
         </div>
     </div>
-    <div>
+    <div class='applist'>
         <ul>
-            <li each={ items }>
-                <label class={ completed: done }>
-                    <input type="checkbox" checked={ done } onclick={ parent.toggle }> { instan }
-                </label>
+            <li each={ apps }>
+                <button class="app" onclick={ launch }>
+                    { name }
+                </button>
             </li>
         </ul>
     </div>
@@ -24,7 +24,7 @@
         left: 0;
         width: 100%;
     }
-    #taskbar {
+    .taskbar {
         position: absolute;
         height: 50px;
         width: 100%;
@@ -47,13 +47,34 @@
         text-align: center;
         margin: auto;
     }
+    .applist {
+        position: absolute;
+        top: 50px;
+        left: 0px;
+    }
+    .app {
+        border-color: black;
+        border-style: dotted;
+        background-color: lightgrey;
+    }
+    .app:hover {
+        cursor: pointer;
+    }
+
     /** other tag specific styles **/
     </style>
 
     <script>
-    var colour_win = "mdc-text-grey"
+    /* a list of all our apps */
+    this.apps = [
+        {name: "File Browser", launch: function(){console.log("you just launched the file browser")}},
+        {name: "Terminal", launch: function(){console.log("you just launched the the terminal")}},
+        {name: "Vim.js", launch: function(){console.log("Not implemented yet")}},
+    ]
+    this.colour_win = "mdc-text-grey"
 
     click() {
+
         console.log('lol')
     }
     </script>
