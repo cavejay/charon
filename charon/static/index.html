@@ -39,7 +39,7 @@
         <script type="text/javascript" src="static/scripts/FileBrowser.js"></script>
 
         <!-- Terminal -->
-        <script type="text/javascript" src="static/vendor/terminal.min.js"></script>
+        <script type="text/javascript" src="static/vendor/terminal.js"></script>
 
         <!-- Riot & Tags -->
         <script type="text/javascript" src="static/vendor/riot+compiler.min.js"></script>
@@ -88,6 +88,16 @@
             x={250}
             y={170}>
           <filebrowser></filebrowser>
+        </application>
+
+        <application
+            title="My Files"
+            id="terminal"
+            width={640}
+            height={480}
+            x={250}
+            y={170}>
+          <terminal></terminal>
         </application>
 
         <script type="text/javascript" src="static/desktop.js"></script>
