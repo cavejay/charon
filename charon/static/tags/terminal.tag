@@ -25,7 +25,7 @@
         $.ajax({
           type: "POST",
           url: "terminal/" + id,
-          data: command,
+          data: {command},
           success: function(result) {
             console.log(result);
             term.echo(result);

@@ -55,7 +55,7 @@ def terminal_input(term_num):
 
     shell = current_app.config['terminal'][term_num]
     print(str(request.form))
-    result = shell.run(str(request.form.split()))
+    result = shell.run(str(request.form['command']))
     return result.output
 
 
