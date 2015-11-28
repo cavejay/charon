@@ -2,7 +2,7 @@
 
 <table id="filebrowsertable">
     <tr>
-        <td><a onclick="getDirectory('home')">/usr</a></td>
+        <td><a onclick="getDirectory('home/p3te')">/home</a></td>
     </tr>
 </table>
 
