@@ -12,9 +12,6 @@ from flask import render_template, request
 from charon.mod_fileserver.fileserver_util import get_file_data
 from . import mod_fileserver
 
-@mod_fileserver.route('/', methods=['POST'])
-def terminal():
-    return "lalala"
 
 @mod_fileserver.route('/list/<path:folder>', methods=['POST', 'GET'])
 def list_folder(folder):
@@ -72,5 +69,12 @@ def append_file(file):
     data = request.data
     p = Path('/' + file)
 
-    return str(p) + ' Super data incomeing ' + str(data)
+    if p.is_dir():
+        return "Can only create files"
+
+    f = open(str(p.resolve()), 'w')
+
+    f.write(bytes(data))
+
+    return "Worked"
 
