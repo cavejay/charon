@@ -22,6 +22,7 @@ def list_folder(folder):
     List a folder on the filesystem
     :return:
     """
+
     p = Path('/' + folder)
 
     files = [get_file_data(item) for item in p.iterdir()]
