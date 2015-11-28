@@ -1,6 +1,6 @@
 <application>
   <div id="{ opts.id }" class="content">
-    <yield />
+      <yield /> 
   </div>
 
   <script>
