@@ -77,17 +77,46 @@
     makeAppInstance(ref) {
         console.log("[APPLAUNCHER] attempting to launch "+ref);
 
-        // lets do a deep copy
-        var newApp = jQuery.extend(true, {}, this.apps[ref]);
+        // // lets do a deep copy
+        // var newApp = jQuery.extend(true, {}, this.apps[ref]);
+        //
+        // // update the things
+        // newApp.id = ref+(this.apps[ref].uid+1);
+        // newApp.x = 200; newApp.y = 200;
+        // newApp.width = 640; newApp.height = 480;
+        // this.openApps.push(newApp); // publish the new app
+        //
+        // $("#appdeposit").append()
+        // var tags = riot.mount(newApp.tagName);
 
-        // update the things
-        newApp.id = ref+(this.apps[ref].uid+1);
-        newApp.x = 200; newApp.y = 200;
-        newApp.width = 640; newApp.height = 480;
-        this.openApps.push(newApp); // publish the new app
+        /*
+        title={ title }
+        id={ id }
+        width={ width }
+        height={ height }
+        x={x}
+        y={y}>
+        */
 
-        $("#appdeposit").append()
-        var tags = riot.mount(newApp.tagName);
+        var id = ref+(this.apps[ref].uid+1);
+
+        // Make the application tag and and append it to the app area
+        var app = $('<application/>', {
+          id: id,
+          title: 'Become a Googler',
+          w: 640,
+          h: 680,
+          x: 50,
+          y: 50
+        }).appendTo('#apps');
+
+        // Append the required app to the application tag
+        $('<' + ref + '>').appendTo(app);
+
+        // Mount the application tag. The yield inside application tag will take
+        // care of mounting the inner app (I think)
+        riot.mount('#' + id);
+
         this.click(); // hide the menu again
     }
 

@@ -1,16 +1,16 @@
 <application>
   <div id="{ opts.id }" class="content">
-      <yield /> 
+      <yield />
   </div>
 
   <script>
     // Create a Ventus window with the content
     var window = wm.createWindow.fromQuery("#" + opts.id, {
       title: opts.title,
-      width: opts.width,
-      height: opts.height,
-      x: opts.x,
-      y: opts.y,
+      width: opts.w,
+      height: opts.h,
+      x: parseInt(opts.x),
+      y: parseInt(opts.y),
       events: {
         close: function() {
           // TODO Tell the app launcher to 'close' this application
