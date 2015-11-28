@@ -99,12 +99,15 @@
         y={y}>
         */
 
-        var id = ref+(this.apps[ref].uid+1);
+        console.log(this.apps);
+        var id = ref+(this.apps[ref].uid);
+
+        this.apps[ref].uid += 1;
 
         // Make the application tag and and append it to the app area
         var app = $('<application/>', {
           id: id,
-          title: 'Become a Googler',
+          title: this.apps[ref].title,
           w: 640,
           h: 680,
           x: 50,

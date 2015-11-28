@@ -1,7 +1,5 @@
 <application>
-  <div id="{ opts.id }" class="content">
-      <yield />
-  </div>
+  <yield />
 
   <script>
     // Create a Ventus window with the content
