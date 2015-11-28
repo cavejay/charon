@@ -9,6 +9,7 @@
         <title>CHARON</title>
         <meta name="viewport" content="width=1224">
 
+        <link href='static/vendor/terminal.css' rel='stylesheet' type='text/css' />
         <link href='static/css/normalize.css' rel='stylesheet' type='text/css' />
         <link href='static/css/desktop.css' rel='stylesheet' type='text/css' />
         <link href='static/vendor/ventus.css' rel='stylesheet' type='text/css' />
@@ -27,15 +28,18 @@
             </div>
         </div>
 
-
         <!-- Ventus -->
         <script type="text/javascript" src="static/vendor/jquery.js"></script>
         <script type="text/javascript" src="static/vendor/ventus.js"></script>
+
+        <!-- Terminal -->
+        <script type="text/javascript" src="static/vendor/terminal.min.js"></script>    
 
         <!-- Riot & Tags -->
         <script type="text/javascript" src="static/vendor/riot+compiler.min.js"></script>
         <script src="static/tags/application.tag" type="riot/tag"></script>
         <script src="static/tags/applauncher.tag" type="riot/tag"></script>
+        <script src="static/tags/terminal.tag" type="riot/tag"></script>
 
 
         <script type="text/javascript" src="static/desktop.js"></script>
@@ -47,6 +51,7 @@
             height={200}
             x={50}
             y={100}>
+            <terminal></terminal>
         </application>
     </body>
 </html>
