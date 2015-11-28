@@ -1,5 +1,5 @@
 from functools import wraps
-from flask import request, Response
+from flask import request, Response, session, abort
 
 def check_auth(username, password):
     """
@@ -14,8 +14,11 @@ def check_auth(username, password):
 def requires_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        auth = request.authorization
-        if not auth or not check_auth(auth.username, auth.password):
-            return Response('Login!', 401, {'WWW-Authenticate': 'Basic realm="Login!"'})
+        if not 'username' in session or not 'password' in session or not check_auth(session.get('username'), session.get('password')):
+            return abort(403)
+            #return Response('Login!', 401, {'WWW-Authenticate': 'Basic realm="Login!"'})
         return f(*args, **kwargs)
     return decorated
+
+def authorise(username, password):
+    return 0

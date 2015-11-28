@@ -101,10 +101,3 @@ def terminal_close(term_num):
     current_app['terminal'].pop(term_num)
 
     return str(term_num)
-
-
-#     fds = current_app.config['terminal'][name];
-#     pty.
-#     del current_app.config['terminal'][name]
-#     p.kill()
-#     return "DONE"
