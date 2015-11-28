@@ -14,18 +14,16 @@
                 </button>
             </li>
     </div>
-    <div if={ openApps }>
-        <application
-            each={ openApps }
-            title={ title }
-            id={ id }
-            width={ width }
-            height={ height }
-            x={x}
-            y={y}>
-            <{ tagName }></{ tagName }>
-        </application>
-    </div>
+    <application
+        each={ openApps }
+        title={ title }
+        id={ id }
+        width={ width }
+        height={ height }
+        x={x}
+        y={y}>
+    <filebrowser></filebrowser>
+    </application>
 
     <style scoped>
     .taskbar {
@@ -66,32 +64,39 @@
     }
     #titlebar h2 {
         text-align: center;
+        line-height: 50px;
         margin: auto;
     }
     </style>
 
     <script>
-    // A creation of all the possible apps and presets for them
-    this.apps = {};
-    this.openApps = [];
+    this.apps = {}; // Dict of all apps possible
+    this.openApps = []; // list of all active apps.
 
+    // Make a new instance of an app
     makeAppInstance(ref) {
         console.log("[APPLAUNCHER] attempting to launch "+ref);
+
+        // lets do a deep copy
         var newApp = jQuery.extend(true, {}, this.apps[ref]);
-        newApp.id = (this.apps[ref].id+1);
+
+        // update the things
+        newApp.id = ref+(this.apps[ref].uid+1);
         newApp.x = 200; newApp.y = 200;
         newApp.width = 640; newApp.height = 480;
-        this.click();
-        this.openApps.push(newApp);
-        console.log(newApp);
+        this.openApps.push(newApp); // publish the new app
+
+        $("#appdeposit").append()
+        var tags = riot.mount(newApp.tagName);
+        this.click(); // hide the menu again
     }
 
     /* a list of all our apps */
     this.appMenu = [
         {name: "File Browser", ref: "filebrowser", launch: function(){this.makeAppInstance("filebrowser")}},
         {name: "Terminal", ref: "terminal", launch: function(){this.makeAppInstance("terminal")}},
-        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet")}},
         {name: "Text Editor", ref: "texteditor", launch: function(){this.makeAppInstance("texteditor")}},
+        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet")}},
     ]
 
     // Show and hide the app launcher's menu
@@ -100,18 +105,22 @@
         this.showingApps = (this.showingApps) ? false : true;
     }
 
-    start() {
+    // Make the templates for each of the apps in the appMenu
+    setup() {
         for (i = 0; i < this.appMenu.length; i++) {
             var tmp = {};
+
+            // set the default values
             tmp.title = this.appMenu[i].name;
             tmp.tagName = this.appMenu[i].ref;
-            tmp.id = -1; tmp.width = -1; tmp.height = -1;
+            tmp.uid = 0; tmp.width = -1; tmp.height = -1;
             tmp.x = -1; tmp.y = -1;
+
+            // save it for later
             this.apps[this.appMenu[i].ref] = tmp;
         }
-        console.log(this.apps);
     };
-    this.start();
+    this.setup(); // run the setup script
     </script>
 
 
