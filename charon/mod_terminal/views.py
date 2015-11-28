@@ -7,6 +7,7 @@
 
 from flask import current_app, request, abort
 import subprocess
+import json
 from . import mod_terminal
 
 # Import spur if possible (will fail on Windows)
@@ -55,7 +56,8 @@ def terminal_input(term_num):
     shell = current_app.config['terminal'][term_num]
     data = request.form.getlist('command')[0]
     result = shell.run(data.split(' '))
-    return result.output
+    print('return: ' + result.output.decode())
+    return json.dumps({'output': result.output.decode()}), 200, {'ContentType':'application/json'} 
 
 
 @mod_terminal.route('/<int:term_num>/close', methods=['POST'])
