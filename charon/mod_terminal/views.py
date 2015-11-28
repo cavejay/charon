@@ -71,11 +71,11 @@ def terminal_input(term_num):
         # Sneaky sneaky worky worky for Windows
         if not hasSpur:
             try:
-                result = subprocess.check_output(request.form.getlist('command')[0], shell=True,
+                message = subprocess.check_output(request.form.getlist('command')[0], shell=True,
                                                  cwd=current_app.config['terminal'][term_num]['workingdir'])
             except subprocess.CalledProcessError:
-                result = "Invalid Command"
-            return result
+                message = "Invalid Command"
+            return json.dumps({'output': message.decode()}), 200, {'ContentType':'application/json'}
 
         result = shell.run(data, cwd=current_app.config['terminal'][term_num]['workingdir'], allow_error=True)
 
