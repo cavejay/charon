@@ -47,15 +47,14 @@ def terminal_input(term_num):
 
     # Sneaky sneaky worky worky for Windows
     if not hasSpur:
-
-        return subprocess.check_output(request.data.decode(), shell=True)
+        return subprocess.check_output(request.form.getlist('command')[0], shell=True)
         # p = subprocess.Popen('cmd.exe /k', shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         # p.stdin.write(request.data)
         # return p.communicate()[0].decode()
 
     shell = current_app.config['terminal'][term_num]
     print(str(request.form))
-    result = shell.run(str(request.form['command']))
+    result = shell.run(request.form.getlist('command')[0])
     return result.output
 
 
