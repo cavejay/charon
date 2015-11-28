@@ -12,5 +12,12 @@
     }, { prompt: '>', name: 'test' });
 
     });
+
   </script>
+
+  <style scoped>
+    #term {
+      height: 100%;
+    }
+  </style>
 </terminal>
