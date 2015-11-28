@@ -1,29 +1,19 @@
 <applauncher>
     <div class="taskbar">
         <button id="applistbutton" onclick={ this.click }>
-            <i class="zmdi zmdi-favorite zmdi-hc-3x"></i>
+            <i class="zmdi zmdi-apps zmdi-hc-3x"></i>
         </button>
         <div id="titlebar">
             <h2> C H A R O N </h2>
         </div>
     </div>
     <div class='applist' if={ showingApps }>
-            <li each={ appMenu }>
-                <button class="app" onclick={ launch }>
-                    { name }
-                </button>
-            </li>
+        <li each={ appMenu }>
+            <button class="app" onclick={ launch }>
+                { name }
+            </button>
+        </li>
     </div>
-    <application
-        each={ openApps }
-        title={ title }
-        id={ id }
-        width={ width }
-        height={ height }
-        x={x}
-        y={y}>
-    <filebrowser></filebrowser>
-    </application>
 
     <style scoped>
     .taskbar {
@@ -77,18 +67,6 @@
     // Make a new instance of an app
     makeAppInstance(ref) {
         console.log("[APPLAUNCHER] attempting to launch "+ref);
-
-        // // lets do a deep copy
-        // var newApp = jQuery.extend(true, {}, this.apps[ref]);
-        //
-        // // update the things
-        // newApp.id = ref+(this.apps[ref].uid+1);
-        // newApp.x = 200; newApp.y = 200;
-        // newApp.width = 640; newApp.height = 480;
-        // this.openApps.push(newApp); // publish the new app
-        //
-        // $("#appdeposit").append()
-        // var tags = riot.mount(newApp.tagName);
 
         /*
         title={ title }
