@@ -4,7 +4,7 @@
 
     Url routes are specified here.
 """
-
+import os
 from pathlib import Path
 from flask import jsonify, send_from_directory
 from flask import render_template, request
@@ -35,7 +35,36 @@ def deliver_file(file):
     :return:
     """
 
-
     p = Path('/' + file)
 
     return send_from_directory(directory=str(p.parent.resolve()), filename=p.name)
+
+
+@mod_fileserver.route('/del/<path:file>', methods=['POST'])
+def delete_file(file):
+    p = Path('/' + file)
+
+    if p.exists() != True:
+        return "File does not exist"
+
+    try:
+        p.unlink()
+
+    except FileNotFoundError:
+        return "Cannot remove file"
+
+    return "Removed"
+
+
+@mod_fileserver.route('/create/<path:file>/', methods=['POST'])
+def append_file(file):
+    """
+    Takes file data and inserts it into
+    :param file:
+    :return:
+    """
+    data = request.data
+    p =  Path('/' + file)
+
+    return str(p) + ' Super data incomeing ' + str(data)
+
