@@ -8,21 +8,24 @@ import os
 from pathlib import Path
 from flask import jsonify, send_from_directory
 from flask import render_template, request
+
+from charon.mod_fileserver.fileserver_util import get_file_data
 from . import mod_fileserver
 
 @mod_fileserver.route('/', methods=['POST'])
 def terminal():
     return "lalala"
 
-@mod_fileserver.route('/list/<path:folder>')
+@mod_fileserver.route('/list/<path:folder>', methods=['POST', 'GET'])
 def list_folder(folder):
     """
     List a folder on the filesystem
     :return:
     """
+
     p = Path('/' + folder)
 
-    files = [item.name for item in p.iterdir()]
+    files = [get_file_data(item) for item in p.iterdir()]
 
     return jsonify(dict(data=files))
 
@@ -51,12 +54,15 @@ def delete_file(file):
         p.unlink()
 
     except FileNotFoundError:
-        return "Cannot remove file"
+        return "File does not exist"
+
+    except PermissionError:
+        return "No permissions to delete file"
 
     return "Removed"
 
 
-@mod_fileserver.route('/create/<path:file>/', methods=['POST'])
+@mod_fileserver.route('/pull/<path:file>/', methods=['POST'])
 def append_file(file):
     """
     Takes file data and inserts it into
@@ -64,7 +70,7 @@ def append_file(file):
     :return:
     """
     data = request.data
-    p =  Path('/' + file)
+    p = Path('/' + file)
 
     return str(p) + ' Super data incomeing ' + str(data)
 

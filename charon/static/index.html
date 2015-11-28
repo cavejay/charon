@@ -9,6 +9,7 @@
         <title>CHARON</title>
         <meta name="viewport" content="width=1224">
 
+        <link href='static/vendor/terminal.css' rel='stylesheet' type='text/css' />
         <link href='static/css/normalize.css' rel='stylesheet' type='text/css' />
         <link href='static/css/desktop.css' rel='stylesheet' type='text/css' />
         <link href='static/vendor/ventus.css' rel='stylesheet' type='text/css' />
@@ -20,6 +21,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     </head>
     <body unselectable="on">
+        <applauncher></applauncher>
         <div class="browser-overlay">
             <div class="wrapper">
                 <h2>This experiment has only been tested on <strong>Chrome</strong> and <strong>Safari</strong> browsers!</h2>
@@ -29,10 +31,14 @@
             </div>
         </div>
 
-
         <!-- Ventus -->
         <script type="text/javascript" src="static/vendor/jquery.js"></script>
         <script type="text/javascript" src="static/vendor/ventus.js"></script>
+
+        <script type="text/javascript" src="static/scripts/TestAppStuff.js"></script>
+
+        <!-- Terminal -->
+        <script type="text/javascript" src="static/vendor/terminal.min.js"></script>
 
         <!-- Riot & Tags -->
         <script type="text/javascript" src="static/vendor/riot+compiler.min.js"></script>
@@ -45,24 +51,32 @@
         <script src="static/tags/toolbar.tag" type="riot/tag"></script>
         <script src="static/tags/filebrowser.tag" type="riot/tag"></script>
         <script src="static/tags/applauncher.tag" type="riot/tag"></script>
+        <script src="static/tags/terminal.tag" type="riot/tag"></script>
+
+        <script src="static/tags/testappstuff.tag" type="riot/tag"></script>
+        <script src="static/tags/testfilebrowser.tag" type="riot/tag"></script>
+
+
 
         <application
-            title="Test App"
-            id="test"
-            width={400}
-            height={200}
-            x={50}
+            title="Another Test App"
+            id="test2"
+            width={300}
+            height={300}
+            x={850}
             y={100}>
-          Applications are cool!
+          Flask Shop.
+            <testappstuff></testappstuff>
         </application>
         <application
-            title="Notepad"
-            id="notepad"
-            width={480}
-            height={640}
-            x={200}
-            y={120}>
-          <texteditor text="What's your favourite idea?"></texteditor>
+            title="Test File Browser"
+            id="filebrowser"
+            width={300}
+            height={300}
+            x={1250}
+            y={100}>
+          Test File Browser.
+            <testfilebrowser></testfilebrowser>
         </application>
 
         <application
