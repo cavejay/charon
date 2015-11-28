@@ -53,6 +53,9 @@ def delete_file(file):
     except FileNotFoundError:
         return "Cannot remove file"
 
+    except PermissionError:
+        return "No permissions to delete file"
+
     return "Removed"
 
 
@@ -64,7 +67,7 @@ def append_file(file):
     :return:
     """
     data = request.data
-    p =  Path('/' + file)
+    p = Path('/' + file)
 
     return str(p) + ' Super data incomeing ' + str(data)
 
