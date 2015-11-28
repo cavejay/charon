@@ -22,19 +22,23 @@ except ImportError:
 @mod_terminal.route('/open', methods=['POST'])
 def terminal_open():
     """
+    Opens a new terminal session
 
-    :return:
+    :return: the id of the terminal session
     """
 
     term_num = len(current_app.config['terminal'].keys())
 
+    current_app.config['terminal'][term_num] = {}
+
     if hasSpur:
         s = spur.LocalShell()
-        current_app.config['terminal'][term_num] = {}
+
         current_app.config['terminal'][term_num]['shell'] = s
-        current_app.config['terminal'][term_num]['workingdir'] = str(Path().resolve())
     else:
         current_app.config['terminal'][term_num]['shell'] = None
+
+    current_app.config['terminal'][term_num]['workingdir'] = str(Path().resolve())
 
     return str(term_num)
 
@@ -42,24 +46,18 @@ def terminal_open():
 @mod_terminal.route('/<int:term_num>', methods=['POST'])
 def terminal_input(term_num):
     """
+    Send a command to the given terminal session
 
-    :param term_num:
-    :return:
+    :param term_num: the terminal session
+    :return: the stdout output
     """
     if term_num not in current_app.config['terminal']:
         return abort(400)
 
-    # Sneaky sneaky worky worky for Windows
-    if not hasSpur:
-        return subprocess.check_output(request.form.getlist('command')[0], shell=True)
-        # p = subprocess.Popen('cmd.exe /k', shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
-        # p.stdin.write(request.data)
-        # return p.communicate()[0].decode()
-
     shell = current_app.config['terminal'][term_num]['shell']
     data = request.form.getlist('command')[0].split(' ')
 
-    # Enable cd command in a completely ligit way
+    # Enable cd command in a completely legit way
     if data[0] == 'cd':
         if len(data) == 1:
             current_app.config['terminal'][term_num]['workingdir'] = str(Path().resolve())
@@ -70,6 +68,15 @@ def terminal_input(term_num):
             message = ''
         return json.dumps({'output': message}), 200, {'ContentType':'application/json'}
     else:
+        # Sneaky sneaky worky worky for Windows
+        if not hasSpur:
+            try:
+                result = subprocess.check_output(request.form.getlist('command')[0], shell=True,
+                                                 cwd=current_app.config['terminal'][term_num]['workingdir'])
+            except subprocess.CalledProcessError:
+                result = "Invalid Command"
+            return result
+
         result = shell.run(data, cwd=current_app.config['terminal'][term_num]['workingdir'], allow_error=True)
 
         if result.return_code != 0:
@@ -83,9 +90,10 @@ def terminal_input(term_num):
 @mod_terminal.route('/<int:term_num>/close', methods=['POST'])
 def terminal_close(term_num):
     """
+    Close a terminal session
 
-    :param term_num:
-    :return:
+    :param term_num: the terminal session
+    :return: the terminal session id that was closed
     """
     if term_num not in current_app.config['terminal']:
         return abort(400)
