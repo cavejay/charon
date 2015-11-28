@@ -33,65 +33,7 @@
         <script type="static/text/javascript" src="vendor/modernizr.js"></script>
     </head>
     <body unselectable="on">
-        <div class="apps" style="display:none" unselectable="on">
-            <!-- TodoMVC App example with Backbone -->
-
-            <div class="todo-app">
-                <header class="todo-app-header">
-                    <input class="todo-app-new" placeholder="What needs to be done?" autofocus>
-                </header>
-                <section class="todo-app-main">
-                    <input class="todo-app-toggle-all" type="checkbox">
-                    <!--<label for="toggle-all">Mark all as complete</label>-->
-                    <ul class="todo-list"></ul>
-                </section>
-            </div>
-
-            <script type="text/template" id="item-template">
-                <div class="view">
-                    <input class="toggle" type="checkbox" <%= completed ? 'checked' : '' %>>
-                    <label><%- title %></label>
-                    <button class="destroy"></button>
-                </div>
-                <input class="edit" value="<%- title %>">
-            </script>
-
-            <!-- Terminus App example -->
-
-            <div class="terminal-app"></div>
-            <script type="text/javascript" src="static/terminal/terminus.min.js"></script>
-            <script type="text/javascript" src="static/terminal/commands/testcommands.js"></script>
-            <script type="text/javascript" src="static/terminal/commands/vendor/three.js"></script>
-            <script type="text/javascript" src="static/terminal/commands/vendor/supertags.js"></script>
-            <script type="text/javascript" src="static/terminal/commands/shapecommands.js"></script>
-
-            <!-- Video Player App -->
-
-            <div class="player-app">
-                <video class="video-js vjs-default-skin" controls preload="auto" width="635" height="264" poster="static/player/oceans-clip.jpg" data-setup="{}">
-                    <source src="player/oceans-clip.mp4" type='video/mp4' />
-                </video>
-            </div>
-
-            <!-- About App -->
-            <div class="about-app">
-              About
-            </div>
-         </div>
-
-        <!-- Ventus Loader Screen -->
-
-        <div id="loading-screen" unselectable="on">
-            <section>
-                <div class="content">
-                    <header>
-                        <h1>Desktop</h1>
-                    </header>
-                    <p><img src="static/img/loader.gif" /> Loading...</p>
-                </div>
-            </section>
-        </div>
-
+        <applauncher></applauncher>
         <div class="browser-overlay">
             <div class="wrapper">
                 <h2>This experiment has only been tested on <strong>Chrome</strong> and <strong>Safari</strong> browsers!</h2>
