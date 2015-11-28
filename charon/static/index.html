@@ -13,6 +13,7 @@
         <link href='static/css/normalize.css' rel='stylesheet' type='text/css' />
         <link href='static/css/desktop.css' rel='stylesheet' type='text/css' />
         <link href='static/vendor/ventus.css' rel='stylesheet' type='text/css' />
+        <link href='static/css/customventus.css' rel='stylesheet' type='text/css' />
 
         <link href='static/css/browseralert.css' rel='stylesheet' type='text/css' />
 
@@ -21,7 +22,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     </head>
     <body unselectable="on">
-        <applauncher></applauncher>
         <div class="browser-overlay">
             <div class="wrapper">
                 <h2>This experiment has only been tested on <strong>Chrome</strong> and <strong>Safari</strong> browsers!</h2>
@@ -60,6 +60,7 @@
         <script src="static/tags/testappstuff.tag" type="riot/tag"></script>
         <script src="static/tags/testfilebrowser.tag" type="riot/tag"></script>
 
+        <applauncher></applauncher>
         <application
             title="Another Test App"
             id="test2"
@@ -92,13 +93,13 @@
         </application>
 
         <application
-            title="Terminal Time"
+            title="My Files"
             id="terminal"
             width={640}
             height={480}
-            x={450}
-            y={270}>
-            <terminal></terminal>
+            x={250}
+            y={170}>
+          <terminal></terminal>
         </application>
 
         <script type="text/javascript" src="static/desktop.js"></script>
