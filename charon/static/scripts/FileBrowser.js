@@ -4,6 +4,7 @@ function getDirectory(path) {
         updateFileBrowser(path, result);
     }});
 }
+
 function downloadFile(path) {
     console.log("Want to download the file: " + path);
 }
@@ -125,9 +126,9 @@ function updateFileBrowser(subPath, resultsData){
         console.log("[" + i + "] = " + resultsData.data[i]);
     }
 }
-function bindClick(uniqueId, newPath){
-    $( "#"+newId ).bind('click', function(){
-        console.log($( "#"+newId ).attr("newPath"))
+function bindClick(newIdFile, newPath){
+    $( "#"+newIdFile ).bind('click', function(){
+        console.log($( "#"+newIdFile ).attr("newPath"))
         getDirectory(String(newPath));
     });
 }
@@ -136,11 +137,11 @@ function bindDownloadButton(row, newPath, newIdDowload){
     $newEntryStart.appendTo(row);
 
     jQuery('<input/>', {
-        id: newIdDowload
+        id: newIdDowload,
         type: "image",
         src: "static/img/download.png",
         text: "D"
-    }).appendTo(tdElement);
+    }).appendTo($newEntryStart);
 
     $newEntryEnd = $("</td>");
     $newEntryEnd.appendTo(row);
