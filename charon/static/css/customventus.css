@@ -1,3 +1,7 @@
 .wm-window .wm-window-box header.wm-window-title {
     background-color: #BF562C;
 }
+
+.wm-window.inactive header.wm-window-title {
+  background-color: #888;
+}

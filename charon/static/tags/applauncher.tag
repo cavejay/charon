@@ -7,24 +7,22 @@
             <h2> C H A R O N </h2>
         </div>
     </div>
-    <div class='appMenu' if={ showingApps }>
+    <div class='applist' if={ showingApps }>
             <li each={ appMenu }>
                 <button class="app" onclick={ launch }>
                     { name }
                 </button>
             </li>
     </div>
-    <div class='openapps' if={ !openApps }>
+    <div if={ !openApps }>
         <application
             each={ openApps }
             title={ title }
             id={ id }
             width={ width }
             height={ height }
-            x={300}
-            y={300}>
-        Flask Shop.
-            <testappstuff></testappstuff>
+            x={x}
+            y={y}>
         </application>
     </div>
 
@@ -39,24 +37,9 @@
         position: absolute;
         height: 50px;
         width: 100%;
-        background-color: skyblue;
+        color: white;
+        background-color: rgba(0,0,0,0.6);
         box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.6);
-    }
-    #applistbutton {
-        height: 50px;
-        width: 50px;
-        float: left;
-        background-color: #365d98;
-        margin-right: 10px;
-        padding: 0 0;
-    }
-    #app-list-button:hover {
-        background-color: #4C84D9;
-        cursor: pointer;
-    }
-    #titlebar h2 {
-        text-align: center;
-        margin: auto;
     }
     .applist {
         position: absolute;
@@ -72,6 +55,22 @@
     .app:hover {
         cursor: pointer;
     }
+    #applistbutton {
+        height: 50px;
+        width: 50px;
+        float: left;
+        background-color: #365d98;
+        margin-right: 10px;
+        padding: 0 0;
+    }
+    #applistbutton:hover {
+        background-color: #4C84D9;
+        cursor: pointer;
+    }
+    #titlebar h2 {
+        text-align: center;
+        margin: auto;
+    }
 
     /** other tag specific styles **/
     </style>
@@ -80,24 +79,36 @@
     this.apps = {
         filebrowser: {
             title: "File Browser",
-            id: -1,
-            width: -1,
-            height: -1,
-
+        },
+        terminal: {
+            title: "Terminal",
         }
     }
     /* a list of all our apps */
     this.appMenu = [
-        {name: "File Browser", launch: function(){console.log("you just launched the file browser")}},
-        {name: "Terminal", launch: function(){console.log("you just launched the the terminal")}},
-        {name: "Vim.js", launch: function(){console.log("Not implemented yet")}},
-        {name: "Text Editor", launch: function(){console.log("you just launched the text editor")}},
+        {name: "File Browser", ref: "filebrowser", launch: function(){console.log("you just launched the file browser")}},
+        {name: "Terminal", ref: "terminal", launch: function(){console.log("you just launched the the terminal")}},
+        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet")}},
+        {name: "Text Editor", ref: "textedit", launch: function(){console.log("you just launched the text editor")}},
     ]
+
+    // Show and hide the app launcher's menu
     this.showingApps = false;
     click() {
         this.showingApps = (this.showingApps) ? false : true;
-        console.log('lol')
     }
+
+    start() {
+        for (i = 0; i < this.appMenu.length; i++) {
+            var tmp = {};
+            tmp.title = this.appMenu[i].name;
+            tmp.id = -1; tmp.width = -1; tmp.height = -1;
+            tmp.x = -1; tmp.y = -1;
+            this.apps[this.appMenu[i].ref] = tmp;
+        }
+        console.log(this.apps);
+    };
+    this.start();
     </script>
 
 
