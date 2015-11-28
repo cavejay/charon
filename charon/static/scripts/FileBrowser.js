@@ -26,16 +26,16 @@ function updateFileBrowser(subPath, resultsData){
         var newPath = subPath + "/" + resultsData.data[i];
         var newId = "fileselect-" + i;
 
+
+
         jQuery('<a/>', {
             id: newId,
             text: resultsData.data[i],
             newPath: newPath
         }).appendTo($newEntryStart);
 
-        $( "#"+newId ).bind('click', function(){
-            console.log($( "#"+newId ).attr("newPath"))
-            getDirectory(String(newPath) + i);
-        });
+        bindClick(newId, newPath);
+
 
 //        console.log(newPath);
 //
@@ -61,6 +61,12 @@ function updateFileBrowser(subPath, resultsData){
         //$( "#filebrowsertable" ).innerHTML = appendment;
         */
         console.log("[" + i + "] = " + resultsData.data[i]);
+    }
+    function bindClick(uniqueId, newPath){
+        $( "#"+newId ).bind('click', function(){
+            console.log($( "#"+newId ).attr("newPath"))
+            getDirectory(String(newPath));
+        });
     }
     //.append("<b>Appended text</b>");
 }
