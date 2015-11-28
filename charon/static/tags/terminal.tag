@@ -5,6 +5,7 @@
     this.on('mount', function(){
       var id = 0;
 
+      $('#terminal').parents('.wm-content').css('background-color', 'black');
       $.ajax({
           type: "POST",
           url: "terminal/open",
