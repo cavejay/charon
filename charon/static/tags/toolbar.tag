@@ -2,7 +2,5 @@
   <yield />
 
   <style scoped>
-    :scope {
-    }
   </style>
 </toolbar>
