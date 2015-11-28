@@ -9,6 +9,7 @@ from flask import current_app, request, abort
 import subprocess
 import json
 from . import mod_terminal
+from pathlib import Path
 
 # Import spur if possible (will fail on Windows)
 try:
@@ -29,9 +30,11 @@ def terminal_open():
 
     if hasSpur:
         s = spur.LocalShell()
-        current_app.config['terminal'][term_num] = s
+        current_app.config['terminal'][term_num] = {}
+        current_app.config['terminal'][term_num]['shell'] = s
+        current_app.config['terminal'][term_num]['workingdir'] = str(Path('/home').resolve())
     else:
-        current_app.config['terminal'][term_num] = None
+        current_app.config['terminal'][term_num]['shell'] = None
 
     return str(term_num)
 
@@ -53,11 +56,28 @@ def terminal_input(term_num):
         # p.stdin.write(request.data)
         # return p.communicate()[0].decode()
 
-    shell = current_app.config['terminal'][term_num]
-    data = request.form.getlist('command')[0]
-    result = shell.run(data.split(' '))
-    print('return: ' + result.output.decode())
-    return json.dumps({'output': result.output.decode()}), 200, {'ContentType':'application/json'} 
+    shell = current_app.config['terminal'][term_num]['shell']
+    data = request.form.getlist('command')[0].split(' ')
+
+    # Enable cd command in a completely ligit way
+    if data[0] == 'cd':
+        if len(data) == 1:
+            current_app.config['terminal'][term_num]['workingdir'] = str(Path('/home').resolve())
+            message = ''
+        else:
+            new_path = str(Path(current_app.config['terminal'][term_num]['workingdir'] + "/" + data[1]).resolve())
+            current_app.config['terminal'][term_num]['workingdir'] = new_path
+            message = ''
+        return json.dumps({'output': message}), 200, {'ContentType':'application/json'}
+    else:
+        result = shell.run(data, cwd=current_app.config['terminal'][term_num]['workingdir'], allow_error=True)
+
+        if result.return_code != 0:
+            message = result.stderr_output.decode()
+        else:
+            message = result.output.decode()
+
+        return json.dumps({'output': message}), 200, {'ContentType':'application/json'} 
 
 
 @mod_terminal.route('/<int:term_num>/close', methods=['POST'])

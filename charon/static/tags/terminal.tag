@@ -20,16 +20,12 @@
           url: "terminal/" + id,
           data: {command},
           success: function(result) {
-            console.log('Hello');
-            console.log(result);
-            console.log(result.output);
-            console.log(result['output']);
             term.echo(result['output']);
           },
           dataType: 'json'
         });
 
-      }, { prompt: '>', name: 'test' });
+      }, { prompt: '> ', name: 'test' });
     });
 
   </script>
