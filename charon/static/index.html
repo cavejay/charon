@@ -16,6 +16,8 @@
         <link href='static/css/browseralert.css' rel='stylesheet' type='text/css' />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,300,400" rel="stylesheet" type="text/css" />
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     </head>
     <body unselectable="on">
         <div class="browser-overlay">
@@ -36,6 +38,12 @@
         <script type="text/javascript" src="static/vendor/riot+compiler.min.js"></script>
         <script src="static/tags/application.tag" type="riot/tag"></script>
         <script src="static/tags/texteditor.tag" type="riot/tag"></script>
+        <script src="static/tags/file.tag" type="riot/tag"></script>
+        <script src="static/tags/filelist.tag" type="riot/tag"></script>
+        <script src="static/tags/toolbar-breadcrumbs.tag" type="riot/tag"></script>
+        <script src="static/tags/toolbar-button.tag" type="riot/tag"></script>
+        <script src="static/tags/toolbar.tag" type="riot/tag"></script>
+        <script src="static/tags/filebrowser.tag" type="riot/tag"></script>
         <script src="static/tags/applauncher.tag" type="riot/tag"></script>
 
         <application
@@ -55,6 +63,16 @@
             x={200}
             y={120}>
           <texteditor text="What's your favourite idea?"></texteditor>
+        </application>
+
+        <application
+            title="My Files"
+            id="files-browser"
+            width={640}
+            height={480}
+            x={250}
+            y={170}>
+          <filebrowser></filebrowser>
         </application>
 
         <script type="text/javascript" src="static/desktop.js"></script>
