@@ -35,9 +35,9 @@
         <!-- Riot & Tags -->
         <script type="text/javascript" src="static/vendor/riot+compiler.min.js"></script>
         <script src="static/tags/application.tag" type="riot/tag"></script>
+        <script src="static/tags/texteditor.tag" type="riot/tag"></script>
 
 
-        <script type="text/javascript" src="static/desktop.js"></script>
 
         <application
             title="Test App"
@@ -46,6 +46,18 @@
             height={200}
             x={50}
             y={100}>
+          Applications are cool!
         </application>
+        <application
+            title="Notepad"
+            id="notepad"
+            width={480}
+            height={640}
+            x={200}
+            y={120}>
+          <texteditor text="What's your favourite idea?"></texteditor>
+        </application>
+
+        <script type="text/javascript" src="static/desktop.js"></script>
     </body>
 </html>
