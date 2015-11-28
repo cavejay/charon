@@ -53,8 +53,8 @@ def terminal_input(term_num):
         # return p.communicate()[0].decode()
 
     shell = current_app.config['terminal'][term_num]
-    print(str(request.form))
-    result = shell.run(request.form.getlist('command')[0])
+    data = request.form.getlist('command')[0]
+    result = shell.run(data.split(' '))
     return result.output
 
 
