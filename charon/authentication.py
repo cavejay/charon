@@ -9,7 +9,7 @@ def check_auth(username, password):
     :param password: the password to check
     :return: true if auth successful, false otherwise
     """
-    return username == "user" and password == "password"
+    return username == "koth" and password == "kothPassword"
 
 def requires_auth(f):
     @wraps(f)
