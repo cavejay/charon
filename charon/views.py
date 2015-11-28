@@ -40,16 +40,6 @@ def list_folder(folder):
     return jsonify(dict(data=files))
 
 
-@application.route('/login', methods=['GET', 'POST'])
+@application.route('/login')
 def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != "dsa":
-            error = 'Invalid username'
-        elif request.form['password'] != "asd":
-            error = 'Invalid password'
-        else:
-            session['logged_in'] = True
-            flash('You were logged in')
-            return redirect(url_for('show_entries'))
-    return Response("IDK", content_type='text/event-stream')
+    return "IDK"
