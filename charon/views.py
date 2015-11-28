@@ -22,7 +22,6 @@ def index():
     return application.send_static_file('index.html')
 
 
-
 @application.route('/login')
 def login():
     return "IDK"

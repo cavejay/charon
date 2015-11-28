@@ -189,3 +189,7 @@ body {
 	position: relative;
 
 }
+
+.terminalSession {
+	background-color: black;
+}
