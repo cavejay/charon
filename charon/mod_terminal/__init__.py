@@ -9,3 +9,4 @@ from flask import Blueprint
 
 mod_terminal = Blueprint('mod_terminal', __name__)
 
+from . import views
