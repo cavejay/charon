@@ -64,6 +64,7 @@
     }
     #titlebar h2 {
         text-align: center;
+        line-height: 50px;
         margin: auto;
     }
     </style>
