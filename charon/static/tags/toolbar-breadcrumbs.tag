@@ -1,5 +1,5 @@
 <toolbar-breadcrumbs>
-  <input type="text" class="breadcrumbs {colour}" readonly value={ opts.path} />
+  <input type="text" class="breadcrumbs {colour}" value={ opts.path } />
 
   <style scoped>
     input {

@@ -26,6 +26,18 @@ def list_folder(folder):
 
     return jsonify(dict(data=files))
 
+@mod_fileserver.route('/list', methods=['POST', 'GET'])
+def list_root_folder():
+    """
+    List the root directory on the filesytem
+    :return:
+    """
+
+    p = Path('/')
+
+    files = [get_file_data(item) for item in p.iterdir()]
+
+    return jsonify(dict(data=files))
 
 @mod_fileserver.route('/get/<path:file>', methods=['POST', 'GET'])
 def deliver_file(file):
@@ -77,4 +89,3 @@ def append_file(file):
     f.write(bytes(data))
 
     return "Worked"
-
