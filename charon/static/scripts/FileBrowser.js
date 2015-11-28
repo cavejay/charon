@@ -148,6 +148,6 @@ function bindDownloadButton(row, newPath, newIdDowload){
 
     $( "#"+newIdDowload ).bind('click', function(){
         console.log($( "#"+newIdDowload ).attr("newPath"))
-        downloadFile(newIdDowload);
+        downloadFile(newPath);
     });
 }
