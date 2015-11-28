@@ -16,13 +16,21 @@
       });
 
       $('#term').terminal(function(command, term) {
+        console.log(command);
+        var bytes = [];
+
+        for (var i = 0; i < command.length; ++i) {
+          bytes.push(command.charCodeAt(i));
+        }
         $.ajax({
           type: "POST",
-          url: "terminal/" + id ,
-          success: function(result){
+          url: "terminal/" + id,
+          data: command,
+          success: function(result) {
             console.log(result);
             term.echo(result);
-          }
+          },
+          dataType: "json"
         });
 
       }, { prompt: '>', name: 'test' });
