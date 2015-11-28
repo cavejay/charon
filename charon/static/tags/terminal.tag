@@ -21,11 +21,14 @@
           data: {command},
           success: function(result) {
             term.echo(result['output']);
+            $('.wm-content').animate({ scrollTop: $(document).height() }, "fast");
           },
           dataType: 'json'
         });
 
       }, { prompt: '> ', name: 'test' });
+
+      
     });
 
   </script>

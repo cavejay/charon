@@ -32,7 +32,7 @@ def terminal_open():
         s = spur.LocalShell()
         current_app.config['terminal'][term_num] = {}
         current_app.config['terminal'][term_num]['shell'] = s
-        current_app.config['terminal'][term_num]['workingdir'] = str(Path('/home').resolve())
+        current_app.config['terminal'][term_num]['workingdir'] = str(Path().resolve())
     else:
         current_app.config['terminal'][term_num]['shell'] = None
 
@@ -62,7 +62,7 @@ def terminal_input(term_num):
     # Enable cd command in a completely ligit way
     if data[0] == 'cd':
         if len(data) == 1:
-            current_app.config['terminal'][term_num]['workingdir'] = str(Path('/home').resolve())
+            current_app.config['terminal'][term_num]['workingdir'] = str(Path().resolve())
             message = ''
         else:
             new_path = str(Path(current_app.config['terminal'][term_num]['workingdir'] + "/" + data[1]).resolve())
