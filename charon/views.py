@@ -22,15 +22,11 @@ def index():
     return application.send_static_file('index.html')
 
 
-@application.route('/hello/<name>')
-def say_hello(name):
-    return 'Hello {}!'.format(name)
-
-
 @application.route('/list/<path:folder>')
 def list_folder(folder):
     """
     List a folder on the filesystem
+    :param folder: Path provided in the url to list contents of.
     :return:
     """
     p = Path('/' + folder)
@@ -40,16 +36,6 @@ def list_folder(folder):
     return jsonify(dict(data=files))
 
 
-@application.route('/login', methods=['GET', 'POST'])
+@application.route('/login')
 def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != "dsa":
-            error = 'Invalid username'
-        elif request.form['password'] != "asd":
-            error = 'Invalid password'
-        else:
-            session['logged_in'] = True
-            flash('You were logged in')
-            return redirect(url_for('show_entries'))
-    return Response("IDK", content_type='text/event-stream')
+    return "IDK"
