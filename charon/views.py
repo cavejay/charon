@@ -6,12 +6,13 @@
 """
 
 from pathlib import Path
-
 from flask import jsonify, request, session, flash, redirect, render_template, url_for, Response
 from . import application
 
+from charon.authentication import requires_auth
 
 @application.route('/')
+@requires_auth
 def index():
     """
     Root path of the website.
@@ -25,3 +26,5 @@ def index():
 @application.route('/login')
 def login():
     return "IDK"
+
+
