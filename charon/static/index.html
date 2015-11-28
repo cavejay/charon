@@ -75,19 +75,7 @@
 
             <!-- About App -->
             <div class="about-app">
-                <h1>Desktop</h1>
-                <h2>HTML5 & CSS3 Window Manager Experiment</h2>
-
-                <button class="expose-button">Try Exposé</button>
-                <p>or <strong>right-click</strong> to activate it</p>
-
-                <div class="copyright">
-                    <p>Copyright (c) 2012 Ramón Lamana</p>
-                    <p class="vendor">
-                        Basejs by A. Matías Quezada.<br/>
-                        Video.js by Steve Heffernan and Zencoder Inc.
-                    </p>
-                </div>
+              About
             </div>
          </div>
 
@@ -113,12 +101,28 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="static/vendor/riot+compiler.min.js"></script>
+
         <!-- Ventus -->
         <script type="text/javascript" src="static/vendor/jquery.js"></script>
         <!-- <script type="text/javascript" src="../../vendor/handlebars.js"></script> -->
         <script type="text/javascript" src="static/vendor/ventus.js"></script>
+
+        <!-- Riot & Tags -->
+        <script type="text/javascript" src="static/vendor/riot+compiler.min.js"></script>
+        <script src="static/tags/application.tag" type="riot/tag"></script>
+
+
         <script type="text/javascript" data-main="todo/main.js" src="static/vendor/require.js"></script>
         <script type="text/javascript" src="static/desktop.js"></script>
+
+        <application
+            title="Test App"
+            id="test"
+            width={400}
+            height={200}
+            x={50}
+            y={100}>
+          Child stuff
+        </application>
     </body>
 </html>

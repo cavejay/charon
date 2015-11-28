@@ -85,6 +85,8 @@
 				openWithDelay(todoWin, 200);
 				openWithDelay(aboutWin, 400);
 				openWithDelay(playerWin, 600);
+
+				riot.mount('*');
 			});
 		}
 
