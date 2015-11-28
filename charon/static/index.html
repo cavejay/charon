@@ -9,28 +9,28 @@
         <title>Window Manager Experiment</title>
         <meta name="viewport" content="width=1224">
 
-        <link href='css/normalize.css' rel='stylesheet' type='text/css' />
-        <link href='css/desktop.css' rel='stylesheet' type='text/css' />
-        <link href='vendor/ventus.css' rel='stylesheet' type='text/css' />
+        <link href='static/css/normalize.css' rel='stylesheet' type='text/css' />
+        <link href='static/css/desktop.css' rel='stylesheet' type='text/css' />
+        <link href='static/vendor/ventus.css' rel='stylesheet' type='text/css' />
 
-        <link href='css/browseralert.css' rel='stylesheet' type='text/css' />
+        <link href='static/css/browseralert.css' rel='stylesheet' type='text/css' />
 
         <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,300,400" rel="stylesheet" type="text/css" />
 
         <!-- TodoMVC App styles -->
-        <link href='todo/css/base.css' rel='stylesheet' type='text/css' />
+        <link href='static/todo/css/base.css' rel='stylesheet' type='text/css' />
         <link href='http://fonts.googleapis.com/css?family=Arvo:400,400italic,700,700italic' rel='stylesheet' type='text/css' />
 
          <!-- Terminus App styles -->
-        <link href='terminal/css/base.css' rel='stylesheet' type='text/css' />
-        <link href='terminal/css/terminus.css' rel='stylesheet' type='text/css' />
+        <link href='static/terminal/css/base.css' rel='stylesheet' type='text/css' />
+        <link href='static/terminal/css/terminus.css' rel='stylesheet' type='text/css' />
         <link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic,700italic' rel='stylesheet' type='text/css' />
 
         <!-- Video App -->
-        <link href="player/video-js.css" rel="stylesheet" type='text/css' />
-        <script src="player/video.js"></script>
+        <link href="static/player/video-js.css" rel="stylesheet" type='text/css' />
+        <script src="static/player/video.js"></script>
 
-        <script type="text/javascript" src="vendor/modernizr.js"></script>
+        <script type="static/text/javascript" src="vendor/modernizr.js"></script>
     </head>
     <body unselectable="on">
         <div class="apps" style="display:none" unselectable="on">
@@ -59,16 +59,16 @@
             <!-- Terminus App example -->
 
             <div class="terminal-app"></div>
-            <script type="text/javascript" src="terminal/terminus.min.js"></script>
-            <script type="text/javascript" src="terminal/commands/testcommands.js"></script>
-            <script type="text/javascript" src="terminal/commands/vendor/three.js"></script>
-            <script type="text/javascript" src="terminal/commands/vendor/supertags.js"></script>
-            <script type="text/javascript" src="terminal/commands/shapecommands.js"></script>
+            <script type="text/javascript" src="static/terminal/terminus.min.js"></script>
+            <script type="text/javascript" src="static/terminal/commands/testcommands.js"></script>
+            <script type="text/javascript" src="static/terminal/commands/vendor/three.js"></script>
+            <script type="text/javascript" src="static/terminal/commands/vendor/supertags.js"></script>
+            <script type="text/javascript" src="static/terminal/commands/shapecommands.js"></script>
 
             <!-- Video Player App -->
 
             <div class="player-app">
-                <video class="video-js vjs-default-skin" controls preload="auto" width="635" height="264" poster="player/oceans-clip.jpg" data-setup="{}">
+                <video class="video-js vjs-default-skin" controls preload="auto" width="635" height="264" poster="static/player/oceans-clip.jpg" data-setup="{}">
                     <source src="player/oceans-clip.mp4" type='video/mp4' />
                 </video>
             </div>
@@ -99,7 +99,7 @@
                     <header>
                         <h1>Desktop</h1>
                     </header>
-                    <p><img src="img/loader.gif" /> Loading...</p>
+                    <p><img src="static/img/loader.gif" /> Loading...</p>
                 </div>
             </section>
         </div>
@@ -115,10 +115,10 @@
 
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/riot/2.3.11/riot+compiler.min.js"></script>
         <!-- Ventus -->
-        <script type="text/javascript" src="vendor/jquery.js"></script>
+        <script type="text/javascript" src="static/vendor/jquery.js"></script>
         <!-- <script type="text/javascript" src="../../vendor/handlebars.js"></script> -->
-        <script type="text/javascript" src="vendor/ventus.js"></script>
-        <script type="text/javascript" data-main="todo/main.js" src="vendor/require.js"></script>
-        <script type="text/javascript" src="desktop.js"></script>
+        <script type="text/javascript" src="static/vendor/ventus.js"></script>
+        <script type="text/javascript" data-main="todo/main.js" src="static/vendor/require.js"></script>
+        <script type="text/javascript" src="static/desktop.js"></script>
     </body>
 </html>
