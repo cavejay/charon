@@ -10,7 +10,7 @@
 
 		function init() {
 			// Mount all riot tags
-			riot.mount('*');
+			riot.mount('application, applauncher');
 		}
 
 		init();

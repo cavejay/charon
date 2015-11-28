@@ -71,7 +71,6 @@ def terminal_close(term_num):
     return str(term_num)
 
 
-
 #     fds = current_app.config['terminal'][name];
 #     pty.
 #     del current_app.config['terminal'][name]

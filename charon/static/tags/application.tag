@@ -1,6 +1,6 @@
 <application>
   <div id="{ opts.id }" class="content">
-    <yield />
+      <yield /> 
   </div>
 
   <script>
@@ -20,4 +20,10 @@
 
     window.open();
   </script>
+
+  <style scoped>
+    .content {
+      height: 100%;
+    }
+  </style>
 </application>
