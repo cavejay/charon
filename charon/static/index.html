@@ -61,26 +61,6 @@
         <script src="static/tags/testfilebrowser.tag" type="riot/tag"></script>
 
         <applauncher></applauncher>
-        <application
-            title="Another Test App"
-            id="test2"
-            width={300}
-            height={300}
-            x={850}
-            y={100}>
-          Flask Shop.
-            <testappstuff></testappstuff>
-        </application>
-        <application
-            title="Test File Browser"
-            id="filebrowser"
-            width={400}
-            height={800}
-            x={1250}
-            y={50}>
-          Test File Browser.
-            <testfilebrowser></testfilebrowser>
-        </application>
 
         <application
             title="My Files"
@@ -101,6 +81,8 @@
             y={170}>
           <terminal></terminal>
         </application>
+
+        <div id="apps"> </div>
 
         <script type="text/javascript" src="static/desktop.js"></script>
     </body>
