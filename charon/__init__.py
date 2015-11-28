@@ -6,9 +6,9 @@
 """
 
 from flask import Flask
-from charon.mod_terminal import mod_terminal
-from charon.mod_fileserver import mod_fileserver
-from charon.serversessions import MongoSession, MongoSessionInterface
+from .mod_terminal import mod_terminal
+from .mod_fileserver import mod_fileserver
+from .serversessions import MongoSession, MongoSessionInterface
 
 application = Flask(__name__)
 
