@@ -16,6 +16,7 @@ try:
 except ImportError:
     hasSpur = False
 
+
 @mod_terminal.route('/open', methods=['POST'])
 def terminal_open():
     """
@@ -46,13 +47,15 @@ def terminal_input(term_num):
 
     # Sneaky sneaky worky worky for Windows
     if not hasSpur:
+
         return subprocess.check_output(request.data.decode(), shell=True)
         # p = subprocess.Popen('cmd.exe /k', shell=True, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         # p.stdin.write(request.data)
         # return p.communicate()[0].decode()
 
     shell = current_app.config['terminal'][term_num]
-    result = shell.run(request.data.split())
+    print(str(request.form))
+    result = shell.run(str(request.form.split()))
     return result.output
 
 
