@@ -1,17 +1,16 @@
 <terminal>
-  <div id="terminal">Hello</div>
+  <div id="term"></div>
 
   <script>
     this.on('mount', function(){
-      $('#terminal').terminal(function(command, term) {
-    if (command == 'test') {
+    $('#term').terminal(function(command, term) {
+      if (command == 'test') {
         term.echo("you just typed 'test'");
-    } else {
+      } else {
         term.echo('unknown command');
-    }
-}, { prompt: '>', name: 'test' });
+      }
+    }, { prompt: '>', name: 'test' });
 
     });
-    
   </script>
 </terminal>
