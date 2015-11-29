@@ -19,7 +19,7 @@
         $.ajax({
           type: "POST",
           url: "terminal/" + id,
-          data: {command},
+          data: {'username': username, 'password': password},
           success: function(result) {
             term.echo(result['output']);
             $('#terminal').parents('.wm-content').animate({ scrollTop: $(document).height() }, "fast");
@@ -29,7 +29,7 @@
 
       }, { prompt: '> ', name: 'test' });
 
-      
+
     });
 
   </script>

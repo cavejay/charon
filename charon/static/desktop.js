@@ -10,9 +10,8 @@
 
 		function init() {
 			// Mount all riot tags
-			riot.mount('applauncher');
+			riot.mount('applauncher', 'loadingscreen');
 		}
-
 		init();
 	});
 })($, Ventus);
