@@ -85,7 +85,7 @@ def append_file(file):
     :return:
     """
 
-    data = request.data
+    data = request.form.getlist('text')[0]
     p = Path('/' + file)
 
     if p.is_dir():
@@ -93,7 +93,7 @@ def append_file(file):
 
     try:
         f = open(str(p.absolute()), 'w')
-        f.write(data.decode())
+        f.write(data)
         f.close()
 
     except PermissionError:
