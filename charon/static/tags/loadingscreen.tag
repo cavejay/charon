@@ -33,6 +33,9 @@
             color: #FFFFFF;
             font-family: 'Iceland', cursive;
         }
+        input:focus {
+            outline-color: #BABABA;
+        }
     </style>
 
     <script>
