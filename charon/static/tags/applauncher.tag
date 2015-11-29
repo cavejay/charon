@@ -119,11 +119,10 @@
 
     /* a list of all our apps */
     this.appMenu = [
-        {name: "File Browser", ref: "filebrowser", launch: function(){makeAppInstance("filebrowser"); this.click()}},
-        {name: "GBA", ref: "gba", launch: function(){makeAppInstance("gba"); this.click()}},
-        {name: "Terminal", ref: "terminal", launch: function(){makeAppInstance("terminal"); this.click()}},
-        {name: "Text Editor", ref: "texteditor", launch: function(){makeAppInstance("texteditor"); this.click()}},
-        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet"); this.click()}},
+        {name: "File Browser", icon: 'folder',  ref: "filebrowser", launch: function(){makeAppInstance("filebrowser"); this.click()}},
+        {name: "Terminal", icon: 'code', ref: "terminal", launch: function(){makeAppInstance("terminal"); this.click()}},
+        {name: "Text Editor", icon: 'file-text', ref: "texteditor", launch: function(){makeAppInstance("texteditor"); this.click()}},
+        {name: "Image Viewer", icon: 'flower', ref: "imageviewer", launch: function(){makeAppInstance("imageviewer"); this.click()}},
     ];
 
 
