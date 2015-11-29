@@ -1,6 +1,6 @@
 <filebrowser>
   <toolbar class="toolbar">
-    <toolbar-button onclick={ parent.back } class="button-back" icon="arrow-left" unclickable={ parent.historyIndex < 1 } /><toolbar-button onclick={ parent.forward } class="button-forward" icon="arrow-right" unclickable={ parent.historyIndex >= (parent.history.length - 1) }/><toolbar-breadcrumbs class="breadcrumbs" id="breadcrumbs" path={ parent.pwd } /><toolbar-button class="button-new" icon="plus" />
+    <toolbar-button onclick={ parent.back } class="button-back" icon="arrow-left" unclickable={ parent.historyIndex < 1 } /><toolbar-button onclick={ parent.forward } class="button-forward" icon="arrow-right" unclickable={ parent.historyIndex >= (parent.history.length - 1) }/><toolbar-breadcrumbs class="crumbs" id="breadcrumbs" path={ parent.pwd } /><toolbar-button class="button-new" icon="plus" />
   </toolbar>
   <filelist class="filelist" files={ files } />
 
@@ -78,6 +78,20 @@
     this.fetchFiles();
     this.history.push(this.pwd);
     this.historyIndex++;
+
+    this.on('mount', function() {
+      $(".crumbs").keyup(function (e) {
+        if (e.keyCode == 13) {
+          console.log('keyup');
+
+          self.history = self.history.slice(0, self.historyIndex + 1);
+          self.pwd = e.target.value;
+          self.history.push(self.pwd);
+          self.historyIndex++;
+          self.fetchFiles();
+        }
+      });
+    });
 
   </script>
 
