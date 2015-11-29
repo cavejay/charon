@@ -41,35 +41,45 @@
 
     <script>
         this.loggedIn = false;
+        flipLoading(){this.loggedIn ? false : true}
 
         // Hide loader when loaded
         $(document).keypress(function (e) {
+            this.loggedIn = true;
             if (e.which == 13) {
-                $.ajax({
-                    type: "POST",
-                    url: "/login",
-                    data: {'username': $('#box_username').val(), 'password': $('#box_password').val()},
-                    success: function(result) {
-                        console.log("WINRAR");
-                        var loader = $("#loading-screen");
-                        loader.addClass('hide');
-                        loader.on(Ventus.browser.animationEventName(), function() {
-                            loader.hide();
-                        });
-                    },
-                    statusCode: {
-                        404: function() {
-                            alert( "page not found" );
-                        },
-                        401: function() {
-                            console.log("U GOT WORNG U SCRUB");
-                        },
-                        400: function() {
-                            console.log("didn't get a password");
-                        },
-                    },
-                    dataType: 'json'
+                var loader = $("#loading-screen");
+                loader.addClass('hide');
+                loader.on(Ventus.browser.animationEventName(), function() {
+                    loader.hide();
                 });
+
+                // $.ajax({
+                //     type: "POST",
+                //     url: "/login",
+                //     data: {'username': $('#box_username').val(), 'password': $('#box_password').val()},
+                //     success: function(result) {
+                //         this.flipLoading();
+                //         var loader = $("#loading-screen");
+                //         loader.addClass('hide');
+                //         loader.on(Ventus.browser.animationEventName(), function() {
+                //             loader.hide();
+                //         });
+                //     },
+                //     statusCode: {
+                //         404: function() {
+                //             alert( "page not found" );
+                //         },
+                //         401: function() {
+                //             console.log("U GOT WORNG U SCRUB");
+                //             this.flipLoading()
+                //         },
+                //         400: function() {
+                //             console.log("didn't get a password");
+                //             this.flipLoading();
+                //         },
+                //     },
+                //     dataType: 'json'
+                // });
             }
         });
     </script>
