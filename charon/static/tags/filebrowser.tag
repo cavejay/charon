@@ -38,7 +38,16 @@
           filepath += "/" + event.item.name;
         }
 
-        makeAppInstance("texteditor", { filepath: filepath } );
+
+        var filename = event.item.name;
+        var extension = filename.substr(filename.lastIndexOf('.')+1);
+
+        if (extension === 'png' || extension === 'jpg') {
+            makeAppInstance("imageviewer", { filepath: filepath } );
+        } else {
+            makeAppInstance("texteditor", { filepath: filepath } );
+        }
+
       } else {
         // Destroy all the future history
         this.history = this.history.slice(0, this.historyIndex + 1);
