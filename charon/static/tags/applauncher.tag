@@ -61,54 +61,19 @@
     </style>
 
     <script>
-    this.apps = {}; // Dict of all apps possible
-    this.openApps = []; // list of all active apps.
+    Charon.apps = {}; // Dict of all apps possible
 
-    // Make a new instance of an app
-    makeAppInstance(ref) {
-        console.log("[APPLAUNCHER] attempting to launch "+ref);
 
-        /*
-        title={ title }
-        id={ id }
-        width={ width }
-        height={ height }
-        x={x}
-        y={y}>
-        */
-
-        console.log(this.apps);
-        var id = ref+(this.apps[ref].uid);
-
-        this.apps[ref].uid += 1;
-
-        // Make the application tag and and append it to the app area
-        var app = $('<application/>', {
-          id: id,
-          title: this.apps[ref].title,
-          w: 640,
-          h: 680,
-          x: 50,
-          y: 50
-        }).appendTo('#apps');
-
-        // Append the required app to the application tag
-        $('<' + ref + '>').appendTo(app);
-
-        // Mount the application tag. The yield inside application tag will take
-        // care of mounting the inner app (I think)
-        riot.mount('#' + id);
-
-        this.click(); // hide the menu again
-    }
 
     /* a list of all our apps */
     this.appMenu = [
-        {name: "File Browser", ref: "filebrowser", launch: function(){this.makeAppInstance("filebrowser")}},
-        {name: "Terminal", ref: "terminal", launch: function(){this.makeAppInstance("terminal")}},
-        {name: "Text Editor", ref: "texteditor", launch: function(){this.makeAppInstance("texteditor")}},
-        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet")}},
+        {name: "File Browser", ref: "filebrowser", launch: function(){makeAppInstance("filebrowser"); this.click()}},
+        {name: "Terminal", ref: "terminal", launch: function(){makeAppInstance("terminal")}},
+        {name: "Text Editor", ref: "texteditor", launch: function(){makeAppInstance("texteditor")}},
+        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet")}}
     ]
+
+
 
     // Show and hide the app launcher's menu
     this.showingApps = false;
@@ -128,7 +93,7 @@
             tmp.x = -1; tmp.y = -1;
 
             // save it for later
-            this.apps[this.appMenu[i].ref] = tmp;
+            Charon.apps[this.appMenu[i].ref] = tmp;
         }
     };
     this.setup(); // run the setup script
