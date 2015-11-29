@@ -22,7 +22,7 @@
             background: linear-gradient(to bottom, #BF562C, transparent)
 
         }
-    </script>
+    </style>
 
     <script>
         this.loggedIn = false;
