@@ -8,6 +8,8 @@
 
 		window.wm = wm; // For debugging reasons
 
+		wmHack = window.wm; //hacked.
+
 		function init() {
 			// Mount all riot tags
 			riot.mount('applauncher');

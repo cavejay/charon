@@ -4,10 +4,9 @@
 
     Url routes are specified here.
 """
-import os
 from pathlib import Path
 from flask import jsonify, send_from_directory
-from flask import render_template, request
+from flask import request
 
 from charon.mod_fileserver.fileserver_util import get_file_data
 from . import mod_fileserver
@@ -26,6 +25,7 @@ def list_folder(folder):
 
     return jsonify(dict(data=files))
 
+
 @mod_fileserver.route('/list', methods=['POST', 'GET'])
 def list_root_folder():
     """
@@ -38,6 +38,7 @@ def list_root_folder():
     files = [get_file_data(item) for item in p.iterdir()]
 
     return jsonify(dict(data=files))
+
 
 @mod_fileserver.route('/get/<path:file>', methods=['POST', 'GET'])
 def deliver_file(file):
@@ -54,38 +55,50 @@ def deliver_file(file):
 
 @mod_fileserver.route('/del/<path:file>', methods=['POST'])
 def delete_file(file):
+    """
+    Deletes a specific file from the host machine. Returns HTTP errors if there are problems
+    :param file: Path to the file to delete
+    :return: Either 200, or an applicable error.
+    """
     p = Path('/' + file)
 
     if p.exists() != True:
-        return "File does not exist"
+        return str(404)
 
     try:
         p.unlink()
 
     except FileNotFoundError:
-        return "File does not exist"
+        return str(404)
 
     except PermissionError:
-        return "No permissions to delete file"
+        return str(401)
 
-    return "Removed"
+    return str(200)
 
 
-@mod_fileserver.route('/pull/<path:file>/', methods=['POST'])
+@mod_fileserver.route('/pack/<path:file>', methods=['POST'])
 def append_file(file):
     """
-    Takes file data and inserts it into
+    Takes file data and inserts it into either a new file or replaces an old file.
     :param file:
     :return:
     """
+
     data = request.data
     p = Path('/' + file)
 
     if p.is_dir():
-        return "Can only create files"
+        return str(400)
 
-    f = open(str(p.resolve()), 'w')
+    try:
+        f = open(str(p.absolute()), 'w')
+        f.write(data.decode())
+        f.close()
 
-    f.write(bytes(data))
+    except PermissionError:
+        return str(401)
 
-    return "Worked"
+
+
+    return str(200)

@@ -7,14 +7,13 @@
 
       var self = this;
 
-      $('#terminal').parents('.wm-content').css('background-color', 'black');
       $.ajax({
           type: "POST",
           url: "terminal/open",
           success: function(result) {
             self.id = result;
             self.update();
-
+            $('#term' + self.id).parents('.wm-content').css('background-color', 'black');
             $('#term' + self.id).terminal(function(command, term) {
 
         $.ajax({
@@ -23,7 +22,7 @@
           data: {command},
           success: function(result) {
             term.echo(result['output']);
-            $("select[name='Terminal']").parents('.wm-content').animate({ scrollTop: $(document).height() }, "fast");
+            $('#term' + self.id).parents('.wm-content').animate({ scrollTop: $(document).height() }, "fast");
           },
           dataType: 'json'
         });
