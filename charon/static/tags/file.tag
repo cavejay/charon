@@ -5,7 +5,4 @@
     <span class="file-column">{ opts.size }</span>
     <span class="file-column">{ opts.lastmodified }</span>
   </div>
-
-  <style scoped>
-  </style>
 </file>

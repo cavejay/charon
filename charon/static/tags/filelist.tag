@@ -1,10 +1,10 @@
 <filelist>
   <table>
     <tr onclick={ parent.parent.openFileOrDirectory } each={ opts.files }>
-      <td><i class="zmdi zmdi-{ isFile ? 'file' : 'folder-outline' }" /></td>
-      <td>{ name }</td>
-      <td class="filesize">{ formatSize(size) }</td>
-      <td class="date">{ formatDate(lastModified) }</td>
+      <td><i charonClk="true" class="zmdi zmdi-{ isFile ? 'file' : 'folder-outline' }" /></td>
+      <td charonClk="true" class="filename">{ name }</td>
+      <td charonClk="true" class="filesize">{ formatSize(size) }</td>
+      <td charonClk="true" class="date">{ formatDate(lastModified) }</td>
     </tr>
   </table>
 
