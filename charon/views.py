@@ -31,6 +31,6 @@ def login():
 
     if authorise(username, password):
         return redirect(url_for('index'))
-    return abort(403)
+    return abort(401)
 
 
