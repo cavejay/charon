@@ -12,3 +12,10 @@ function myFunction() {
         console.log( result );
     }});
 }
+var wmHack;
+function testExposeFunction(){
+    if(wmHack.mode === 'exposeHack')
+        wmHack.mode = 'default';
+    else
+        wmHack.mode = 'exposeHack';
+}

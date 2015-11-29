@@ -6,6 +6,9 @@
         <div id="titlebar">
             <h2> C H A R O N </h2>
         </div>
+        <button id="expose-button" taglol="testZ" onclick='testExposeFunction()'>
+            <i class="zmdi zmdi-apps zmdi-hc-3x"></i>
+        </button>
     </div>
     <div class='applist' if={ showingApps }>
         <li each={ appMenu }>
