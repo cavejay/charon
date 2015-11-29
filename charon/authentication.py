@@ -20,7 +20,7 @@ def requires_auth(f):
     @wraps(f)
     def decorated(*args, **kwargs):
         if not 'username' in session or not 'password' in session or not check_auth(session['username'], session['password']):
-            return redirect(url_for('login'))
+            return abort(401)
             #return Response('Login!', 401, {'WWW-Authenticate': 'Basic realm="Login!"'})
         return f(*args, **kwargs)
     return decorated
