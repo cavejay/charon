@@ -2382,11 +2382,28 @@ define('ventus/wm/windowmanager', [
         ],
         modes: {
             'default': DefaultMode,
-            //'expose': ExposeMode,
+            'expose': DefaultMode,
             'exposeHack': ExposeMode,
             'fullscreen': FullscreenMode
         },
+        setModeFunction: function (value) {
+            if(value == 'default'){
+                this.currentMode.unplug.apply(this);
+            }
+            var mode = this.modes[value];
+            if (!mode || this._mode === value) {
+                return;
+            }
+            if (this._mode && this.currentMode.unplug) {
+                this.currentMode.unplug.apply(this);
+            }
+            if (mode.plug) {
+                mode.plug.apply(this);
+            }
+            this._mode = value;
+        },
         set mode(value) {
+            console.log("When is this called?");
             var mode = this.modes[value];
             if (!mode || this._mode === value) {
                 return;

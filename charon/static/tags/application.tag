@@ -11,6 +11,7 @@
       y: parseInt(opts.y),
       events: {
         close: function() {
+            Charon.numApps = Charon.numApps - 1;
           // TODO Tell the app launcher to 'close' this application
         }
       }

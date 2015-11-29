@@ -1,9 +1,13 @@
 Charon = (typeof Charon !== "undefined") ? Charon : {};
 // window.Charon = Charon;
 Charon.apps = {};
+Charon.numApps = 0;
 console.log("set global");
 
 function makeAppInstance(ref, opts) {
+
+    Charon.numApps = Charon.numApps + 1;
+
     console.log("[APPLAUNCHER] attempting to launch "+ref);
 
     var id = ref+(Charon.apps[ref].uid);
