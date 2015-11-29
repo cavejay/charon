@@ -6,10 +6,10 @@
 """
 
 from pathlib import Path
-from flask import jsonify, request, session, flash, redirect, render_template, url_for, Response
+from flask import jsonify, request, session, flash, redirect, render_template, url_for, Response, abort
 from . import application
 
-from charon.authentication import requires_auth
+from charon.authentication import requires_auth, authorise
 
 @application.route('/')
 @requires_auth
@@ -23,8 +23,15 @@ def index():
     return application.send_static_file('index.html')
 
 
-@application.route('/login')
+@application.route('/login', methods=['POST'])
 def login():
-    return "IDK"
+    if len(request.form.getlist('username')) == 0 or len(request.form.getlist('password')) == 0:
+        return abort(400)
+    username = request.form.getlist('username')[0]
+    password = request.form.getlist('password')[0]
+
+    if authorise(username, password):
+        return redirect(url_for('index'))
+    return abort(403)
 
 
