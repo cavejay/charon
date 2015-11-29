@@ -1,0 +1,11 @@
+branch-defaults:
+  master:
+    environment: charon-dev
+    group_suffix: null
+global:
+  application_name: charon
+  default_ec2_keyname: QutHack1
+  default_platform: Python 3.4
+  default_region: us-west-2
+  profile: eb-cli
+  sc: git

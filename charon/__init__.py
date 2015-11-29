@@ -2,7 +2,8 @@
     Charon
     ======
 
-    Project for a browser based desktop like utility
+    Project for a browser based desktop like utility, to allow
+    convenient and quick interaction with a remote or headless computer.
 """
 
 from flask import Flask
