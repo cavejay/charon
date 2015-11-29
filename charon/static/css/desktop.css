@@ -86,13 +86,14 @@ body {
 }
 
 #loading-screen.hide {
-	-webkit-animation: moveout 1.5s .2s ease forwards;
-	-moz-animation: moveout 1.5s .2s ease forwards;
-	animation: moveout 1.5s .2s ease forwards;
+	-webkit-animation: fadeout 0.5s linear;
+	-moz-animation: fadeout 0.5s linear;
+	animation: fadeout 0.5s linear;
 }
 
 /* Out animation */
-@-webkit-keyframes moveout {
+
+/*@-webkit-keyframes moveout {
 	0% {-webkit-transform: translateX(0);}
 	30% {-webkit-transform: translateX(-10%) scale(.95);}
 	100% {-webkit-transform: translateX(150%) scale(.95);}
@@ -108,7 +109,7 @@ body {
 	0% {transform: translateX(0);}
 	30% {transform: translateX(-10%) scale(.95);}
 	100% {transform: translateX(150%) scale(.95);}
-}
+}*/
 
 /* Player Window */
 
