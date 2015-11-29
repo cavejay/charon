@@ -2,7 +2,7 @@
   <table>
     <tr onclick={ parent.parent.openFileOrDirectory } each={ opts.files }>
       <td><i class="zmdi zmdi-{ isFile ? 'file' : 'folder-outline' }" /></td>
-      <td>{ name }</td>
+      <td class="{name[0] == '.' ? 'hidden' : ''}">{ name }</td>
       <td class="filesize">{ formatSize(size) }</td>
       <td class="date">{ formatDate(lastModified) }</td>
     </tr>
@@ -52,6 +52,8 @@
       color: #FFFFFF;
       cursor: pointer;
     }
+
+    .hidden {color: gray}
 
     .filesize,
     .date {
