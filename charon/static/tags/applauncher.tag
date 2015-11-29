@@ -135,7 +135,7 @@
     /* a list of all our apps */
     this.appMenu = [
         {name: "File Browser", icon: 'folder',  ref: "filebrowser", launch: function(){makeAppInstance("filebrowser"); this.click()}},
-        {name: "Terminal", icon: 'square-right', ref: "terminal", launch: function(){makeAppInstance("terminal"); this.click()}},
+        {name: "Terminal", icon: 'code', ref: "terminal", launch: function(){makeAppInstance("terminal"); this.click()}},
         {name: "Text Editor", icon: 'file-text', ref: "texteditor", launch: function(){makeAppInstance("texteditor"); this.click()}},
     ];
 
