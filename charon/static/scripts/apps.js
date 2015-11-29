@@ -30,3 +30,12 @@ function makeAppInstance(ref, opts) {
     // care of mounting the inner app (I think)
     riot.mount('#' + id);
 }
+function openSelectedFile(){
+  //Charon.rightClickedObject
+}
+function downloadSelectedFile(){
+  //Charon.rightClickedObject
+}
+function deleteSelectedFile(){
+  //Charon.rightClickedObject
+}
