@@ -2382,7 +2382,8 @@ define('ventus/wm/windowmanager', [
         ],
         modes: {
             'default': DefaultMode,
-            'expose': ExposeMode,
+            //'expose': ExposeMode,
+            'exposeHack': ExposeMode,
             'fullscreen': FullscreenMode
         },
         set mode(value) {
