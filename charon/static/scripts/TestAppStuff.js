@@ -12,10 +12,9 @@ function myFunction() {
         console.log( result );
     }});
 }
-//var wmHack;
-var numWindowsOnScreen = 0;
 function testExposeFunction(){
-    if(numWindowsOnScreen == 0){
+    console.log("Charon.numApps = " + Charon.numApps);
+    if(Charon.numApps == 0){
         return;
     }
     if(window.wm.mode === 'exposeHack'){

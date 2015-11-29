@@ -4,10 +4,9 @@
 
     Url routes are specified here.
 """
-import os
 from pathlib import Path
 from flask import jsonify, send_from_directory
-from flask import render_template, request
+from flask import request
 
 from charon.mod_fileserver.fileserver_util import get_file_data
 from . import mod_fileserver
@@ -26,6 +25,7 @@ def list_folder(folder):
 
     return jsonify(dict(data=files))
 
+
 @mod_fileserver.route('/list', methods=['POST', 'GET'])
 def list_root_folder():
     """
@@ -38,6 +38,7 @@ def list_root_folder():
     files = [get_file_data(item) for item in p.iterdir()]
 
     return jsonify(dict(data=files))
+
 
 @mod_fileserver.route('/get/<path:file>', methods=['POST', 'GET'])
 def deliver_file(file):
@@ -86,12 +87,18 @@ def append_file(file):
 
     data = request.data
     p = Path('/' + file)
-    """
-    if p.is_dir():
-        return "Can only create files"
-    """
-    with open(str(p.absolute()), 'w') as f:
 
+    if p.is_dir():
+        return str(400)
+
+    try:
+        f = open(str(p.absolute()), 'w')
         f.write(data.decode())
+        f.close()
+
+    except PermissionError:
+        return str(401)
+
+
 
     return str(200)

@@ -24,22 +24,25 @@
         self.files = result.data;
 
         self.update();
-
-        console.log(self.pwd);
-        console.log(self.historyIndex);
-        console.log(self.history);
       }});
     }
 
     openFileOrDirectory(event) {
-
-      console.log(event);
       if (event.item.isFile) {
-        // TODO open file
+
+        var filepath = this.pwd;
+
+        if (filepath == "/") {
+          filepath += event.item.name;
+        } else {
+          filepath += "/" + event.item.name;
+        }
+
+        makeAppInstance("texteditor", { filepath: filepath } );
       } else {
         // Destroy all the future history
         this.history = this.history.slice(0, this.historyIndex + 1);
-        console.log(this.history);
+
         if (this.pwd == "/") {
           this.pwd += event.item.name;
         } else {
