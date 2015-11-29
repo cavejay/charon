@@ -1,14 +1,14 @@
 <applauncher>
     <div class="taskbar">
         <button id="applistbutton" onclick={ this.click }>
+            <img src="static/img/icons/favicon-32x32.png" />
+        </button>
+        <button id="expose-button" onclick='testExposeFunction()'>
             <i class="zmdi zmdi-apps zmdi-hc-3x"></i>
         </button>
         <div id="titlebar">
             <h2> C H A R O N </h2>
         </div>
-        <button id="expose-button" taglol="testZ" onclick='testExposeFunction()'>
-            <i class="zmdi zmdi-apps zmdi-hc-3x"></i>
-        </button>
     </div>
     <div class='applist' if={ showingApps }>
         <li each={ appMenu }>
@@ -47,13 +47,25 @@
         height: 50px;
         width: 50px;
         float: left;
-        background-color: #365d98;
-        margin-right: 10px;
-        padding: 0 0;
+        background-color: #BF562C;
+        margin-right: 5px;
+        padding: 5px;
+    }
+    #applistbutton img {
+        width: 100%;
+        height: 100%;
     }
     #applistbutton:hover {
-        background-color: #4C84D9;
+        background-color: #e8ad96;
         cursor: pointer;
+    }
+    #expose-button {
+        height: 50px;
+        width: 50px;
+        float: left;
+        background-color: #555555;
+        margin-right: 10px;
+        padding: 0 0;
     }
     #titlebar h2 {
         text-align: center;
