@@ -12,10 +12,16 @@ function myFunction() {
         console.log( result );
     }});
 }
-var wmHack;
+//var wmHack;
+var numWindowsOnScreen = 0;
 function testExposeFunction(){
-    if(wmHack.mode === 'exposeHack')
-        wmHack.mode = 'default';
-    else
-        wmHack.mode = 'exposeHack';
+    if(numWindowsOnScreen == 0){
+        return;
+    }
+    if(window.wm.mode === 'exposeHack'){
+        window.wm.setModeFunction('default');
+    } else {
+        window.wm.setModeFunction('exposeHack');
+    }
+
 }

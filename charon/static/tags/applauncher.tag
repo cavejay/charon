@@ -102,6 +102,8 @@
         // care of mounting the inner app (I think)
         riot.mount('#' + id);
 
+        numWindowsOnScreen = numWindowsOnScreen + 1;
+
         this.click(); // hide the menu again
     }
 
@@ -121,6 +123,7 @@
 
     // Make the templates for each of the apps in the appMenu
     setup() {
+
         for (i = 0; i < this.appMenu.length; i++) {
             var tmp = {};
 
@@ -135,6 +138,9 @@
         }
     };
     this.setup(); // run the setup script
+
+
+
     </script>
 
 
