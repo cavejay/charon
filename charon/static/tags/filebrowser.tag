@@ -38,7 +38,17 @@
           filepath += "/" + event.item.name;
         }
 
-        makeAppInstance("texteditor", { filepath: filepath } );
+        var filename = event.item.name;
+        var extension = filename.substr(filename.lastIndexOf('.')+1);
+        console.log(extension);
+
+        if (extension === 'mp4') {
+            makeAppInstance("videoplayer", { filepath: filepath } );
+        } else if (['jpg', 'png', 'gif'].indexOf(extension) !== -1) {
+            makeAppInstance("imageviewer", { filepath: filepath } );
+        } else {
+            makeAppInstance("texteditor", { filepath: filepath } );
+        }
       } else {
         // Destroy all the future history
         this.history = this.history.slice(0, this.historyIndex + 1);
