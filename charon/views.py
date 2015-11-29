@@ -30,7 +30,7 @@ def login():
     password = request.form.getlist('password')[0]
 
     if authorise(username, password):
-        return redirect(url_for('index'))
+        return Response(status=201)
     return abort(401)
 
 
