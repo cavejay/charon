@@ -13,6 +13,7 @@
     <div class='applist' if={ showingApps }>
         <li each={ appMenu }>
             <button class="app" onclick={ launch }>
+                <i class="zmdi zmdi-{ icon }" />
                 { name }
             </button>
         </li>
@@ -35,28 +36,36 @@
         box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.6);
     }
     .applist {
+        background: rgba(255, 255, 255, 1);
         position: absolute;
         top: 50px;
-        width: 120px;
+        width: 150px;
         left: 0px;
         list-style: none;
     }
     .app {
-        background-color: lightgrey;
+        background: none;
+        border: none;
+        padding: 10px;
+        /*border-left: 1px solid rgba(128, 128, 128, 0.75);
+        border-right: 1px solid rgba(128, 128, 128, 0.75);
+        border-bottom: 1px solid rgba(128, 128, 128, 0.75);*/
+        color: black;
+        text-align: left;
+        font-family: 'Open Sans', cursive;
         width: 100%;
+
     }
     .app:hover {
-        cursor: pointer;
+        background: rgba(192, 192, 192, 0.75)
     }
     #applistbutton {
         height: 50px;
         width: 50px;
         float: left;
-        background-color: rgba(255, 255, 255, 0.75);
-        box-shadow: inset 0px 0px 10px rgba(0,0,0,0.75);
-        border: 2px solid #BF562C;
+        background-color: #BF562C;
         outline: none;
-
+        border: none;
         border-radius: 5px;
         margin-right: 5px;
         padding: 5px;
@@ -64,7 +73,6 @@
     #applistbutton img {
         width: 100%;
         height: 100%;
-        box-shadow:
     }
     #applistbutton:hover {
         background-color: #e8ad96;
@@ -74,9 +82,16 @@
         height: 50px;
         width: 50px;
         float: left;
-        background-color: #555555;
+        border: none;
         margin-right: 10px;
         padding: 0 0;
+        background-color: #BF562C;
+        border-radius: 5px;
+        outline: none;
+    }
+    #expose-button:hover {
+        background-color: #e8ad96;
+        cursor: pointer;
     }
     #titlebar h2 {
         text-align: center;
@@ -119,11 +134,10 @@
 
     /* a list of all our apps */
     this.appMenu = [
-        {name: "File Browser", ref: "filebrowser", launch: function(){makeAppInstance("filebrowser"); this.click()}},
-        {name: "GBA", ref: "gba", launch: function(){makeAppInstance("gba"); this.click()}},
-        {name: "Terminal", ref: "terminal", launch: function(){makeAppInstance("terminal"); this.click()}},
-        {name: "Text Editor", ref: "texteditor", launch: function(){makeAppInstance("texteditor"); this.click()}},
-        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet"); this.click()}},
+        {name: "File Browser", icon: 'folder',  ref: "filebrowser", launch: function(){makeAppInstance("filebrowser"); this.click()}},
+        {name: "Terminal", icon: 'code', ref: "terminal", launch: function(){makeAppInstance("terminal"); this.click()}},
+        {name: "Text Editor", icon: 'file-text', ref: "texteditor", launch: function(){makeAppInstance("texteditor"); this.click()}},
+        {name: "Image Viewer", icon: 'flower', ref: "imageviewer", launch: function(){makeAppInstance("imageviewer"); this.click()}},
     ];
 
 

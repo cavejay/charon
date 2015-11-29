@@ -1,8 +1,8 @@
 <filelist>
   <table>
     <tr onclick={ parent.parent.openFileOrDirectory } each={ opts.files }>
-      <td><i charonClk="false" class="zmdi zmdi-{ isFile ? 'file' : 'folder-outline' }" /></td>
-      <td charonClk={ isFile ? true : false } class="filename">{ name }</td>
+      <td><i charonClk="true" class="zmdi zmdi-{ isFile ? 'file' : 'folder-outline' }" /></td>
+      <td charonClk={ isFile ? true : false } class="{name[0] == '.' ? 'hidden' : ''}">{ name }</td>
       <td charonClk={ isFile ? true : false } class="filesize">{ formatSize(size) }</td>
       <td charonClk={ isFile ? true : false } class="date">{ formatDate(lastModified) }</td>
     </tr>
@@ -54,6 +54,8 @@
       color: #FFFFFF;
       cursor: pointer;
     }
+
+    .hidden {color: gray}
 
     .filesize,
     .date {
