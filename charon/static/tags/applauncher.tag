@@ -78,17 +78,13 @@
     <script>
     Charon.apps = {}; // Dict of all apps possible
 
-
-
     /* a list of all our apps */
     this.appMenu = [
         {name: "File Browser", ref: "filebrowser", launch: function(){makeAppInstance("filebrowser"); this.click()}},
-        {name: "Terminal", ref: "terminal", launch: function(){makeAppInstance("terminal")}},
-        {name: "Text Editor", ref: "texteditor", launch: function(){makeAppInstance("texteditor")}},
-        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet")}}
-    ]
-
-
+        {name: "Terminal", ref: "terminal", launch: function(){makeAppInstance("terminal"); this.click()}},
+        {name: "Text Editor", ref: "texteditor", launch: function(){makeAppInstance("texteditor"); this.click()}},
+        {name: "Vim.js", ref: "vimjs", launch: function(){console.log("Not implemented yet"); this.click()}},
+    ];
 
     // Show and hide the app launcher's menu
     this.showingApps = false;
