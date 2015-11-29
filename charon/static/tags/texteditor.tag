@@ -43,9 +43,9 @@
 
         $.ajax({
           type: "POST",
-          url: 'fs/get' + opts.filepath,
-          data: newText,
-          dataType: "text"
+          url: 'fs/pack' + opts.filepath,
+          data: {'text': newText},
+          dataType: "json"
         });
       }
     }
