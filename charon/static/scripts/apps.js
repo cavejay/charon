@@ -31,11 +31,58 @@ function makeAppInstance(ref, opts) {
     riot.mount('#' + id);
 }
 function openSelectedFile(){
-  //Charon.rightClickedObject
+  //zmdi zmdi-file
+  //zmdi zmdi-folder-outline
+  console.log('openSelectedFile - ');
+  var path = getFilePathOfRightClicked();
+  console.log('path = ' + path);
+
+  makeAppInstance("texteditor", { filepath: path } );
+
+  $(".custom-menu").hide(100);
 }
 function downloadSelectedFile(){
-  //Charon.rightClickedObject
+  console.log('downloadSelectedFile - ');
+  var path = getFilePathOfRightClicked();
+  console.log('path = ' + path);
+
+  var url = "fs/get";
+  url += path;
+
+  console.log("downloading: " + url);
+
+  window.open(url,'_blank');
+/*
+  $.ajax({url: url,
+    type: 'GET',
+    success: function(result){
+    console.log("Get complete! - " + result);
+  }});
+*/
+  $(".custom-menu").hide(100);
 }
 function deleteSelectedFile(){
-  //Charon.rightClickedObject
+  console.log('deleteSelectedFile - ');
+  var path = getFilePathOfRightClicked();
+  console.log('path = ' + path);
+
+  var url = "fs/del";
+  url += path;
+
+  console.log("deleting: " + url);
+
+  $.ajax({url: url,
+    type: 'POST',
+    success: function(result){
+    console.log("Delete complete! - " + result);
+  }});
+
+  $(".custom-menu").hide(100);
+}
+function getFilePathOfRightClicked(){
+  var path = Charon.pwdmegahack + "/" + Charon.rightClickedObject.parent().children('td').slice(1, 2).text();
+  if(Charon.pwdmegahack == '/'){
+    path = Charon.rightClickedObject.parent().children('td').slice(1, 2).text();
+  }
+  return path;
 }

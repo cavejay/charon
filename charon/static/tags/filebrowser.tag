@@ -2,7 +2,7 @@
   <toolbar class="toolbar">
     <toolbar-button onclick={ parent.back } class="button-back" icon="arrow-left" unclickable={ parent.historyIndex < 1 } /><toolbar-button onclick={ parent.forward } class="button-forward" icon="arrow-right" unclickable={ parent.historyIndex >= (parent.history.length - 1) }/><toolbar-breadcrumbs class="crumbs" id="breadcrumbs" path={ parent.pwd } /><toolbar-button class="button-new" icon="plus" />
   </toolbar>
-  <filelist class="filelist" files={ files } />
+  <filelist class="filelist" files={ files } pwdHack={ pwdHack }/>
 
   <script>
     var self = this;
@@ -18,11 +18,13 @@
         url += this.pwd;
       }
 
+      Charon.pwdmegahack = this.pwd;
+
       console.log(url);
 
       $.ajax({url: url, success: function(result){
         self.files = result.data;
-
+        self.pwdHack = this.pwd;
         self.update();
       }});
     }

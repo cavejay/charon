@@ -1,14 +1,16 @@
 <filelist>
   <table>
     <tr onclick={ parent.parent.openFileOrDirectory } each={ opts.files }>
-      <td><i charonClk="true" class="zmdi zmdi-{ isFile ? 'file' : 'folder-outline' }" /></td>
-      <td charonClk="true" class="filename">{ name }</td>
-      <td charonClk="true" class="filesize">{ formatSize(size) }</td>
-      <td charonClk="true" class="date">{ formatDate(lastModified) }</td>
+      <td><i charonClk="false" class="zmdi zmdi-{ isFile ? 'file' : 'folder-outline' }" /></td>
+      <td charonClk={ isFile ? true : false } class="filename">{ name }</td>
+      <td charonClk={ isFile ? true : false } class="filesize">{ formatSize(size) }</td>
+      <td charonClk={ isFile ? true : false } class="date">{ formatDate(lastModified) }</td>
     </tr>
   </table>
 
   <script>
+
+    console.log('update filelist.');
 
     qwer() {
       console.log('qwer');
