@@ -10,7 +10,8 @@
 
 		function init() {
 			// Mount all riot tags
-			riot.mount('applauncher', 'loadingscreen');
+			riot.mount('loadingscreen');
+			riot.mount('applauncher');
 		}
 		init();
 	});
