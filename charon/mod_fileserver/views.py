@@ -54,38 +54,44 @@ def deliver_file(file):
 
 @mod_fileserver.route('/del/<path:file>', methods=['POST'])
 def delete_file(file):
+    """
+    Deletes a specific file from the host machine. Returns HTTP errors if there are problems
+    :param file: Path to the file to delete
+    :return: Either 200, or an applicable error.
+    """
     p = Path('/' + file)
 
     if p.exists() != True:
-        return "File does not exist"
+        return str(404)
 
     try:
         p.unlink()
 
     except FileNotFoundError:
-        return "File does not exist"
+        return str(404)
 
     except PermissionError:
-        return "No permissions to delete file"
+        return str(401)
 
-    return "Removed"
+    return str(200)
 
 
-@mod_fileserver.route('/pull/<path:file>/', methods=['POST'])
+@mod_fileserver.route('/pack/<path:file>', methods=['POST'])
 def append_file(file):
     """
-    Takes file data and inserts it into
+    Takes file data and inserts it into either a new file or replaces an old file.
     :param file:
     :return:
     """
+
     data = request.data
     p = Path('/' + file)
-
+    """
     if p.is_dir():
         return "Can only create files"
+    """
+    with open(str(p.absolute()), 'w') as f:
 
-    f = open(str(p.resolve()), 'w')
+        f.write(data.decode())
 
-    f.write(bytes(data))
-
-    return "Worked"
+    return str(200)
