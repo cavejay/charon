@@ -47,13 +47,19 @@
         height: 50px;
         width: 50px;
         float: left;
-        background-color: #BF562C;
+        background-color: rgba(255, 255, 255, 0.75);
+        box-shadow: inset 0px 0px 10px rgba(0,0,0,0.75);
+        border: 2px solid #BF562C;
+        outline: none;
+
+        border-radius: 5px;
         margin-right: 5px;
         padding: 5px;
     }
     #applistbutton img {
         width: 100%;
         height: 100%;
+        box-shadow:
     }
     #applistbutton:hover {
         background-color: #e8ad96;
