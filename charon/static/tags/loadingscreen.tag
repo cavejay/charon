@@ -5,13 +5,13 @@
                 <header>
                     <h1 id='title'>C H A R O N</h1>
                 </header>
-                <form if={ !loggedIn } style="font-family: 'Iceland', cursive;" onsubmit="return send();">
+                <div if={ !loggedIn } style="font-family: 'Iceland', cursive;">
                     <input class="loginbox" id="box_username" type="text" name="username" placeholder="Username" required>
                     <span class="loginbox" style="margin-left: 20px;">
                         <input type="password" name="password" id="box_password"  placeholder="Password" required>
                     </span>
                     <input type="submit" style="display:none"/>
-                </form>
+                </div>
                 <p if={ loggedIn }><img src="static/img/loader.gif" /> Loading...</p>
             </div>
         </section>
@@ -43,33 +43,34 @@
         this.loggedIn = false;
 
         // Hide loader when loaded
-        var loader = $("#loading-screen");
-
-        send() {
-            $.ajax({
-                type: "POST",
-                url: "/login",
-                data: {'username': $('#box_username').value(), 'password': $('#box_password').value()},
-                success: function(result) {
-                    console.log("WINRAR")
-                    loader.addClass('hide');
-                    loader.on(Ventus.browser.animationEventName(), function() {
-                        loader.hide();
-                    });
-                },
-                statusCode: {
-                    404: function() {
-                        alert( "page not found" );
+        $(document).keypress(function (e) {
+            if (e.which == 13) {
+                $.ajax({
+                    type: "POST",
+                    url: "/login",
+                    data: {'username': $('#box_username').val(), 'password': $('#box_password').val()},
+                    success: function(result) {
+                        console.log("WINRAR");
+                        var loader = $("#loading-screen");
+                        loader.addClass('hide');
+                        loader.on(Ventus.browser.animationEventName(), function() {
+                            loader.hide();
+                        });
                     },
-                    401: function() {
-                        console.log("U GOT WORNG U SCRUB");
+                    statusCode: {
+                        404: function() {
+                            alert( "page not found" );
+                        },
+                        401: function() {
+                            console.log("U GOT WORNG U SCRUB");
+                        },
+                        400: function() {
+                            console.log("didn't get a password");
+                        },
                     },
-                    400: function() {
-                        console.log("didn't get a password");
-                    },
-                },
-                dataType: 'json'
-            });
-        }
+                    dataType: 'json'
+                });
+            }
+        });
     </script>
 </loadingscreen>
