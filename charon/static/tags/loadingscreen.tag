@@ -5,11 +5,12 @@
                 <header>
                     <h1 id='title'>C H A R O N</h1>
                 </header>
-                <form if={ !loggedIn } style="font-family: 'Iceland', cursive;">
-                    <input class="loginbox" type="text" name="username" placeholder="Username" required>
+                <form if={ !loggedIn } style="font-family: 'Iceland', cursive;" onsubmit="return send();">
+                    <input class="loginbox" id="box_username" type="text" name="username" placeholder="Username" required>
                     <span class="loginbox" style="margin-left: 20px;">
-                        <input type="password" name="password"  placeholder="Password" required>
+                        <input type="password" name="password" id="box_password"  placeholder="Password" required>
                     </span>
+                    <input type="submit" style="display:none"/>
                 </form>
                 <p if={ loggedIn }><img src="static/img/loader.gif" /> Loading...</p>
             </div>
@@ -45,8 +46,9 @@
             $.ajax({
                 type: "POST",
                 url: "/login",
-                data: {'username': username, 'password': password},
+                data: {'username': $('#box_username').value(), 'password': $('#box_password').value()},
                 success: function(result) {
+                    console.log("WINRAR")
                     loader.addClass('hide');
                     loader.on(Ventus.browser.animationEventName(), function() {
                         loader.hide();
