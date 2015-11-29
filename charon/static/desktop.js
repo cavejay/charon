@@ -12,6 +12,7 @@
 
 		function init() {
 			// Mount all riot tags
+			riot.mount('loadingscreen');
 			riot.mount('applauncher');
 
 			//window.wm.mode = 'exposeHack';
@@ -21,9 +22,6 @@
 		function getVentusWindowManager(){
 		    return window.wm;
 		}
-
-
-
 		init();
 	});
 })($, Ventus);

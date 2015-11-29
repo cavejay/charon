@@ -11,6 +11,7 @@ from .mod_terminal import mod_terminal
 from .mod_fileserver import mod_fileserver
 
 application = Flask(__name__)
+application.secret_key = "beef"
 
 application.register_blueprint(mod_terminal, url_prefix='/terminal')
 application.config['terminal'] = {}
