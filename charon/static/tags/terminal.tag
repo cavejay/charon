@@ -1,33 +1,36 @@
 <terminal>
-  <div id="term"></div>
+  <div id="term{ id }"></div>
 
   <script>
     this.on('mount', function(){
-      var id = 0;
+      this.id = 0;
+
+      var self = this;
 
       $('#terminal').parents('.wm-content').css('background-color', 'black');
       $.ajax({
           type: "POST",
           url: "terminal/open",
           success: function(result) {
-            id = result;
-          }
-      });
+            self.id = result;
+            self.update();
 
-      $('#term').terminal(function(command, term) {
+            $('#term' + self.id).terminal(function(command, term) {
 
         $.ajax({
           type: "POST",
-          url: "terminal/" + id,
+          url: "terminal/" + self.id,
           data: {command},
           success: function(result) {
             term.echo(result['output']);
-            $('#terminal').parents('.wm-content').animate({ scrollTop: $(document).height() }, "fast");
+            $("select[name='Terminal']").parents('.wm-content').animate({ scrollTop: $(document).height() }, "fast");
           },
           dataType: 'json'
         });
 
       }, { prompt: '> ', name: 'test' });
+          }
+      });
 
       
     });
