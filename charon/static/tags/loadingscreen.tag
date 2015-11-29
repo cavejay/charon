@@ -6,9 +6,10 @@
                     <h1 id='title'>C H A R O N</h1>
                 </header>
                 <form if={ !loggedIn } style="font-family: 'Iceland', cursive;">
-                    <span>
-                    <input class="loginbox" type="text" name="username" required>
-                    <span class="loginbox" style="margin-left: 20px;"><input type="password" name="password" required></span>
+                    <input class="loginbox" type="text" name="username" placeholder="Username" required>
+                    <span class="loginbox" style="margin-left: 20px;">
+                        <input type="password" name="password"  placeholder="Password" required>
+                    </span>
                 </form>
                 <p if={ loggedIn }><img src="static/img/loader.gif" /> Loading...</p>
             </div>
