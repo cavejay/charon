@@ -12,7 +12,6 @@ from . import application
 from charon.authentication import requires_auth, authorise
 
 @application.route('/')
-@requires_auth
 def index():
     """
     Root path of the website.
