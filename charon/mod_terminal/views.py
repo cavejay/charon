@@ -22,7 +22,6 @@ except ImportError:
 
 
 @mod_terminal.route('/open', methods=['POST'])
-@requires_auth
 def terminal_open():
     """
     Opens a new terminal session
@@ -47,7 +46,6 @@ def terminal_open():
 
 
 @mod_terminal.route('/<int:term_num>', methods=['POST'])
-@requires_auth
 def terminal_input(term_num):
     """
     Send a command to the given terminal session
@@ -92,7 +90,6 @@ def terminal_input(term_num):
 
 
 @mod_terminal.route('/<int:term_num>/close', methods=['POST'])
-@requires_auth
 def terminal_close(term_num):
     """
     Close a terminal session
