@@ -21,7 +21,7 @@
         #loading-screen {
             background-color: #BF562C;
         }
-    </script>
+    </style>
 
     <script>
         this.loggedIn = false;
