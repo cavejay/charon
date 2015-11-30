@@ -22,6 +22,14 @@ def index():
     # return application.send_static_file(render_template('index.html'))
     return application.send_static_file('index.html')
 
+@application.route('/demo')
+def demo():
+    """
+    Path to the application demo slides.
+    :return: HTML content for the demo.
+    """
+    return application.send_static_file('demo.html')
+
 
 @application.route('/login', methods=['POST'])
 def login():
