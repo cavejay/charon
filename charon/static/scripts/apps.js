@@ -2,6 +2,7 @@ Charon = (typeof Charon !== "undefined") ? Charon : {};
 // window.Charon = Charon;
 Charon.apps = {};
 Charon.numApps = 0;
+Charon.appStartingIndent = 50;
 console.log("set global");
 
 function makeAppInstance(ref, opts) {
@@ -19,8 +20,8 @@ function makeAppInstance(ref, opts) {
       title: Charon.apps[ref].title,
       w: 640,
       h: (ref === "imageviewer") ? 0 : 680,
-      x: 50,
-      y: 50
+      x: Charon.appStartingIndent + 20*Charon.numApps,
+      y: Charon.appStartingIndent + 20*Charon.numApps
     }).appendTo('#apps');
 
     // Append the required app to the application tag
