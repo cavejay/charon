@@ -72,7 +72,7 @@ function deleteSelectedFile(){
   console.log("deleting: " + url);
 
   $.ajax({url: url,
-    type: 'POST',
+    type: 'POST', /* this should be a DELETE :'( */
     success: function(result){
     console.log("Delete complete! - " + result);
   }});

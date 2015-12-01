@@ -5,14 +5,14 @@
                 <header>
                     <h1 id='title'>C H A R O N</h1>
                 </header>
-                <div if={ !loggedIn } style="font-family: 'Iceland', cursive;">
+                <div if={ !loggingIn } style="font-family: 'Iceland', cursive;">
                     <input class="loginbox" id="box_username" type="text" name="username" placeholder="Username" required>
                     <span class="loginbox" style="margin-left: 20px;">
                         <input type="password" name="password" id="box_password"  placeholder="Password" required>
                     </span>
                     <input type="submit" style="display:none"/>
                 </div>
-                <p if={ loggedIn }><img src="static/img/loader.gif" /> Loading...</p>
+                <p if={ loggingIn }><img src="static/img/loader.gif" /> Loading...</p>
             </div>
         </section>
     </div>
@@ -40,46 +40,38 @@
     </style>
 
     <script>
-        this.loggedIn = false;
+        this.loggingIn = false;
         flipLoading(){this.loggedIn ? false : true}
 
         // Hide loader when loaded
         $(document).keypress(function (e) {
-            this.loggedIn = true;
+            this.loggingIn = true;
             if (e.which == 13) {
-                var loader = $("#loading-screen");
-                loader.addClass('hide');
-                loader.on(Ventus.browser.animationEventName(), function() {
-                    loader.hide();
+                $.ajax({
+                    type: "POST",
+                    url: "/login",
+                    data: {'username': $('#box_username').val(), 'password': $('#box_password').val()},
+                    success: function(result) {
+                        var loader = $("#loading-screen");
+                        loader.addClass('hide');
+                        loader.on(Ventus.browser.animationEventName(), function() {
+                            loader.hide();
+                        });
+                    },
+                    statusCode: {
+                        404: function() {
+                            alert( "page not found" );
+                        },
+                        401: function() {
+                            console.log("U GOT WORNG U SCRUB");
+                        },
+                        400: function() {
+                            console.log("didn't get a password");
+                        },
+                    },
+                    dataType: 'json'
                 });
-
-                // $.ajax({
-                //     type: "POST",
-                //     url: "/login",
-                //     data: {'username': $('#box_username').val(), 'password': $('#box_password').val()},
-                //     success: function(result) {
-                //         this.flipLoading();
-                //         var loader = $("#loading-screen");
-                //         loader.addClass('hide');
-                //         loader.on(Ventus.browser.animationEventName(), function() {
-                //             loader.hide();
-                //         });
-                //     },
-                //     statusCode: {
-                //         404: function() {
-                //             alert( "page not found" );
-                //         },
-                //         401: function() {
-                //             console.log("U GOT WORNG U SCRUB");
-                //             this.flipLoading()
-                //         },
-                //         400: function() {
-                //             console.log("didn't get a password");
-                //             this.flipLoading();
-                //         },
-                //     },
-                //     dataType: 'json'
-                // });
+                this.loggingIn = false;
             }
         });
     </script>
