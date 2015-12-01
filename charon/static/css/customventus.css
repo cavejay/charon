@@ -5,3 +5,7 @@
 .wm-window.inactive header.wm-window-title {
   background-color: #888;
 }
+
+.wm-window {
+  height: auto !important;
+}

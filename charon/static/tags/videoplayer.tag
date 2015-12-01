@@ -6,6 +6,9 @@
   </video>
 
   <style scoped>
+    video {
+      width: 100%;
+    }
   </style>
 
   <script>
