@@ -19,9 +19,9 @@
         </li>
     </div>
     <ul class='custom-menu'>
-      <li data-action="open" onClick="openSelectedFile">Open File in Text Editor</li>
-      <li data-action="download" onClick="downloadSelectedFile">Download File</li>
-      <li data-action="delete" onClick="deleteSelectedFile">Delete File</li>
+      <li data-action="open" onclick="openSelectedFile()">Open File in Text Editor</li>
+      <li data-action="download" onclick="downloadSelectedFile()">Download File</li>
+      <li data-action="delete" onclick="deleteSelectedFile()">Delete File</li>
     </ul>
 
     <style scoped>
@@ -189,18 +189,18 @@ $(document).bind("contextmenu", function (event) {
 
     // If the document is clicked somewhere
     $(document).bind("mousedown", function (e) {
-        console.log("document mousedown");
+        // console.log("document mousedown");
         // If the clicked element is not the menu
-        console.log('e.target.class = ' + $(e.target).attr('class'));
-        console.log('e.target.charonClk = ' + $(e.target).attr('charonClk'));
+        // console.log('e.target.class = ' + $(e.target).attr('class'));
+        // console.log('e.target.charonClk = ' + $(e.target).attr('charonClk'));
         var shouldHideCustomMenu = true;
         //charonClk
-        console.log('$(e.target).parents(".file-column").length = ' + $(e.target).parents(".file-column").length);
+        // console.log('$(e.target).parents(".file-column").length = ' + $(e.target).parents(".file-column").length);
         if($(e.target).attr('charonClk') == 'true'){
-            console.log('Something that you CAN context click on!' + $(e.target).attr('class'))
+            // console.log('Something that you CAN context click on!' + $(e.target).attr('class'))
             Charon.rightClickedObject = $(e.target);
             if(e.which == 3){
-              console.log('was a right-click');
+              // console.log('was a right-click');
               shouldHideCustomMenu = false;
               $(".custom-menu").toggle(100).
 
@@ -210,7 +210,11 @@ $(document).bind("contextmenu", function (event) {
                   left: e.pageX + "px"
               });
             }
+        } else if(typeof $(e.target).attr('data-action') !== 'undefined'){
+          shouldHideCustomMenu = false;
         }
+
+//data-action
 
         if(shouldHideCustomMenu == true){
           console.log('Hide the custom menu.');

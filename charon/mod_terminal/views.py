@@ -8,6 +8,8 @@
 from flask import current_app, request, abort
 import subprocess
 import json
+
+from charon.authentication import requires_auth
 from . import mod_terminal
 from pathlib import Path
 

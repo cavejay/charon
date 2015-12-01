@@ -1,7 +1,3 @@
-
-$( document ).ready(function() {
-    console.log( "AEKG ready!" );
-});
 function myFunction() {
     console.log("Text was clicked.");
     document.getElementById("demo").style.color = "red";
