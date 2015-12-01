@@ -24,7 +24,7 @@
         console.log(url);
 
         $.ajax({
-          type: "GET",
+          type: "POST",
           url: url,
           success: function(result){
             self.text = result;

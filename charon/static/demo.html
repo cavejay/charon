@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>CHARON</title>
+
+		<meta name="description" content="A lightweight, web based remote access application">
+		<meta name="author" content="KOTH">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="static/vendor/reveal/reveal.css">
+		<link rel="stylesheet" href="static/vendor/reveal/black.css" id="theme">
+
+        <link href='https://fonts.googleapis.com/css?family=Iceland' rel='stylesheet' type='text/css'>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+                    <h1 style="font-family: 'Iceland', cursive; font-size: 140pt;">CHARON</h1>
+                    <h3>Remote access desktop</h3>
+				</section>
+
+                <section>
+                    <h2 style="font-family: 'Iceland', cursive;">Features</h2>
+                    <ul>
+                        <li>Full file browser</li>
+                        <li>Window system</li>
+                        <li>Support for streaming data from server</li>
+                        <li>Easily build and port Javascript apps to the windowing system</li>
+                        <li>Everything is an app</li>
+                    </ul>
+                </section>
+
+				<section>
+					<h2 style="font-family: 'Iceland', cursive;">The Stack</h2>
+                    <div id="split" style="width: 100%;">
+                        <div id="left" style="float: left; width: 50%;">
+                            <h3 style="font-family: 'Iceland', cursive;">Front End</h3>
+                            <ul>
+                                <li>Javascript</li>
+                                <li>Ventus.js</li>
+                                <li>Riot.js</li>
+                            </ul>
+                        </div>
+                        <div id="right" style="float: right;">
+                            <h3 style="font-family: 'Iceland', cursive;">Back End</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>Flask</li>
+                            </ul>
+                        </div>
+                    </div>
+				</section>
+
+                <section>
+                    <h2 style="font-family: 'Iceland', cursive;">Apps</h2>
+                    <ul>
+                        <li>Everything on the screen is currently an app</li>
+                        <li>Apps currently exist within their own content frame, independent of the application</li>
+                        <li>Separate content frames, outside of the DOM</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Iceland', cursive;">Three step installation of new Apps</h2>
+                    <ul>
+                        <li>Easily automated</li>
+                        <li>Insert index.html into an application specific tag</li>
+                        <li>Add the application tag into the applauncher</li>
+                        <li>Place dependencies into the main index. This will change in the future</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Iceland', cursive;"> Business Goals </h2>
+                    <ul>
+                        <li>Give businesses access to cheaper hardware</li>
+                        <li>Locked down </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2 style="font-family: 'Iceland', cursive;">Plans for the future</h2>
+                    <ul>
+                        <li>Rebuild the App</li>
+                        <li>Dynamic Profiles</li>
+                        <li>Security - SSL and Authentication</li>
+                        <li>Admin/User split</li>
+                    </ul>
+                </section>
+
+		</div>
+
+		<script src="static/vendor/reveal/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				control: false,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+			});
+
+		</script>
+
+	</body>
+</html>
