@@ -18,6 +18,10 @@
     });
 
     window.open();
+
+    this.on('unmount', function() {
+      Charon.numApps = Charon.numApps - 1;
+    });
   </script>
 
   <style scoped>

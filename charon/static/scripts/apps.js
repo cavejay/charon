@@ -19,7 +19,7 @@ function makeAppInstance(ref, opts) {
       id: id,
       title: Charon.apps[ref].title,
       w: 640,
-      h: (ref === "imageviewer") ? 0 : 680,
+      h: (ref === "imageviewer") ? 0 : 480,
       x: Charon.appStartingIndent + 20*Charon.numApps,
       y: Charon.appStartingIndent + 20*Charon.numApps
     }).appendTo('#apps');
