@@ -44,8 +44,12 @@
         var filename = event.item.name;
         var extension = filename.substr(filename.lastIndexOf('.')+1);
 
+        console.log('the extension is: '+extension);
+
         if (extension === 'png' || extension === 'jpg') {
             makeAppInstance("imageviewer", { filepath: filepath } );
+        } else if (extension === 'mp4') {
+            makeAppInstance("videoplayer", { filepath: filepath } );
         } else {
             makeAppInstance("texteditor", { filepath: filepath } );
         }

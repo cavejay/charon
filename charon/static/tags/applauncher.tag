@@ -139,6 +139,7 @@
         {name: "Text Editor", icon: 'file-text', ref: "texteditor", launch: function(){makeAppInstance("texteditor"); this.click()}},
         {name: "Image Viewer", icon: 'flower', ref: "imageviewer", launch: function(){makeAppInstance("imageviewer"); this.click()}},
         {name: "Reveal", icon: 'collection-image', ref: "reveal", launch: function(){makeAppInstance("reveal"); this.click()}},
+        {name: "Video Player", icon: 'collection-image', ref: "videoplayer", launch: function(){makeAppInstance("videoplayer"); this.click()}},
     ];
 
 
