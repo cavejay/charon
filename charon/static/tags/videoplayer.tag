@@ -15,7 +15,8 @@
     var self = this;
 
 
-    this.on('updated', function () {
+    this.on('mount', function () {
+      $('video').closest('.wm-window').addClass('videoplayerheighthack');
       console.log('updated? video')
       self.playerInst = VideoJS(document.getElementById('video_area'), {}, function(){
         // Player (this) is initialized and ready.
@@ -23,7 +24,7 @@
 
       });
       console.log('this is a thing?')
-      for (var i of wm.windows) {
+      /*for (var i of wm.windows) {
         if (i.$content[0].firstChild.id == self.parent.root.id){
           console.log("Found me!")
           console.log("current: "+i.width+", "+i.height);
@@ -31,7 +32,7 @@
           i.width = self.playerInst.dimension('width');
           i.height = self.playerInst.dimension('height');
         }
-      }//i.hieght and i.width
+      }*///i.hieght and i.width
     })
 
     // Resize Ventus
