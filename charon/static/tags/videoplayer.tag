@@ -16,13 +16,14 @@
 
 
     this.on('mount', function () {
-      $('video').closest('.wm-window').addClass('videoplayerheighthack');
+
       console.log('updated? video')
       self.playerInst = VideoJS(document.getElementById('video_area'), {}, function(){
         // Player (this) is initialized and ready.
         console.log('the video is apparently reading');
 
       });
+      $('video').closest('.wm-window').addClass('videoplayerheighthack');
       console.log('this is a thing?')
       /*for (var i of wm.windows) {
         if (i.$content[0].firstChild.id == self.parent.root.id){
