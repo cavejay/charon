@@ -31,6 +31,8 @@ def list_folder(folder):
             files.append(get_file_data(item))
         except PermissionError:
             pass
+        except FileNotFoundError:
+            pass
 
     return jsonify(dict(data=files))
 

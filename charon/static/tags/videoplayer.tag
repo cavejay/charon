@@ -2,7 +2,7 @@
 
   <video id="video_area" class="video-js vjs-default-skin"
     controls preload="auto"
-     <source src={"fs/get"+opts.filepath} type='video/mp4' />
+     <source src={"fs/get/"+opts.filepath} type='video/mp4' />
   </video>
 
   <style scoped>
