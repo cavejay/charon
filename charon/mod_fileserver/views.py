@@ -39,7 +39,7 @@ def list_folder(folder):
 def list_root_folder():
     """
     List the root directory on the filesytem
-    :return:
+    :return: the root directory listing (only on unix!)
     """
 
     p = Path('/')
