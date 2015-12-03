@@ -12,7 +12,7 @@
     this.historyIndex = -1;
 
     fetchFiles() {
-      var url = "fs/list";
+      var url = "fs/list/";
 
       if (this.pwd !== "/") {
         url += this.pwd;

@@ -1,7 +1,7 @@
 <imageviewer>
 
     <div>
-        <img id="image" src={"fs/get"+opts.filepath}>
+        <img id="image" src={"fs/get/"+opts.filepath}>
     </div>
 
     <style scoped>
