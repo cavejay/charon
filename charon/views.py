@@ -6,6 +6,7 @@
 """
 
 from pathlib import Path
+import platform
 from flask import jsonify, request, session, flash, redirect, render_template, url_for, Response, abort
 from . import application
 
@@ -41,3 +42,15 @@ def login():
     if authorise(username, password):
         return Response(status=200)
     return abort(401)
+
+@application.route('/platform', methods=['GET'])
+def getPlatform():
+    """
+    Retrieve the platform data for the backend
+
+    :return: JSON data about the backend system
+    """
+    result = {'os': platform.system(),
+              'python-version': platform.python_version()}
+
+    return jsonify(result)
