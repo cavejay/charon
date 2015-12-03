@@ -20,7 +20,7 @@
       if (typeof opts.filepath !== "undefined") {
         console.log('lets get');
 
-        var url = 'fs/get' + opts.filepath;
+        var url = 'fs/get/' + opts.filepath;
         console.log(url);
 
         $.ajax({
@@ -43,7 +43,7 @@
 
         $.ajax({
           type: "POST",
-          url: 'fs/pack' + opts.filepath,
+          url: 'fs/pack/' + opts.filepath,
           data: {'text': newText},
           dataType: "json"
         });

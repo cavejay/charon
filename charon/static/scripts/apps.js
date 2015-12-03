@@ -47,7 +47,7 @@ function downloadSelectedFile(){
   var path = getFilePathOfRightClicked();
   console.log('path = ' + path);
 
-  var url = "fs/get";
+  var url = "fs/get/";
   url += path;
 
   console.log("downloading: " + url);
@@ -67,7 +67,7 @@ function deleteSelectedFile(){
   var path = getFilePathOfRightClicked();
   console.log('path = ' + path);
 
-  var url = "fs/del";
+  var url = "fs/del/";
   url += path;
 
   console.log("deleting: " + url);

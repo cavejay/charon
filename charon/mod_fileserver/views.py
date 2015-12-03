@@ -25,7 +25,12 @@ def list_folder(folder):
     else:
         p = Path('/' + folder)
 
-    files = [get_file_data(item) for item in p.iterdir()]
+    files = []
+    for item in p.iterdir():
+        try:
+            files.append(get_file_data(item))
+        except PermissionError:
+            pass
 
     return jsonify(dict(data=files))
 
@@ -39,7 +44,12 @@ def list_root_folder():
 
     p = Path('/')
 
-    files = [get_file_data(item) for item in p.iterdir()]
+    files = []
+    for item in p.iterdir():
+        try:
+            files.append(get_file_data(item))
+        except PermissionError:
+            pass
 
     return jsonify(dict(data=files))
 
