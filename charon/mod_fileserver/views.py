@@ -30,7 +30,7 @@ def list_folder(folder):
     return jsonify(dict(data=files))
 
 
-@mod_fileserver.route('/list', methods=['POST', 'GET'])
+@mod_fileserver.route('/list/', methods=['POST', 'GET'])
 def list_root_folder():
     """
     List the root directory on the filesytem
