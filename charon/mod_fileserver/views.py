@@ -99,6 +99,4 @@ def append_file(file):
     except PermissionError:
         return str(401)
 
-
-
     return str(200)
